@@ -1,0 +1,11 @@
+{
+	"name": "deckplate",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"typecheck": "pnpm -r typecheck"
+	},
+	"devDependencies": {
+		"typescript": "^5.5.0"
+	}
+}
