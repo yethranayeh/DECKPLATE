@@ -1,0 +1,45 @@
+/* DECKPLATE v0.0.0 */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,800&family=Share+Tech+Mono&display=swap");
+
+@theme {
+	--color-orange: #ff5e00;
+	--color-yellow: #ffd600;
+	--color-red: #c91200;
+	--color-red-hi: #ff2200;
+	--color-black: #030303;
+	--color-surface: #111111;
+	--color-off-white: #ede8dc;
+	--color-dim: #666660;
+	--color-line: #282828;
+	--color-active-green: #00ff66;
+
+	--font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+	--font-mono: "Share Tech Mono", "Courier New", monospace;
+
+	--text-display: clamp(3rem, 10vw, 7.5rem);
+	--text-display--line-height: 0.88;
+	--text-xl: clamp(2rem, 6vw, 4.5rem);
+	--text-xl--line-height: 0.92;
+	--text-lg: clamp(1.4rem, 3.5vw, 2.8rem);
+	--text-lg--line-height: 1;
+	--text-md: 1.15rem;
+	--text-md--line-height: 1.1;
+	--text-sm: 0.8rem;
+	--text-sm--line-height: 1.2;
+	--text-mono: 0.65rem;
+	--text-mono--line-height: 1.6;
+
+	--tracking-display: 0.06em;
+	--tracking-xl: 0.06em;
+	--tracking-lg: 0.08em;
+	--tracking-md: 0.18em;
+	--tracking-sm: 0.22em;
+	--tracking-mono: 0.15em;
+
+	--radius-none: 0px;
+	--radius-sm: 0px;
+	--radius-md: 0px;
+	--radius-lg: 0px;
+	--radius-full: 9999px;
+}
