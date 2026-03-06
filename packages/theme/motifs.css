@@ -1,0 +1,204 @@
+/* DECKPLATE v0.0.0 */
+
+.stripe {
+	background: repeating-linear-gradient(
+		-45deg,
+		var(--color-orange) 0px,
+		var(--color-orange) 8px,
+		var(--color-black) 8px,
+		var(--color-black) 16px
+	);
+}
+
+.stripe-sm {
+	height: 6px;
+}
+.stripe-md {
+	height: 10px;
+}
+.stripe-lg {
+	height: 16px;
+}
+
+/* "restricted-zone" variant */
+.stripe-restricted {
+	background: repeating-linear-gradient(
+		-45deg,
+		rgba(255, 214, 0, 0.055) 0px,
+		rgba(255, 214, 0, 0.055) 8px,
+		transparent 8px,
+		transparent 20px
+	);
+}
+
+/* purely visual grid */
+.grid-overlay {
+	position: relative;
+	overflow: hidden;
+}
+
+.grid-overlay::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		repeating-linear-gradient(
+			90deg,
+			rgba(255, 94, 0, 0.04) 0,
+			rgba(255, 94, 0, 0.04) 1px,
+			transparent 1px,
+			transparent 48px
+		),
+		repeating-linear-gradient(
+			0deg,
+			rgba(255, 94, 0, 0.04) 0,
+			rgba(255, 94, 0, 0.04) 1px,
+			transparent 1px,
+			transparent 48px
+		);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.grid-overlay > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Usage: <h1 class="glitch" data-text="DECKPLATE">DECKPLATE</h1> */
+.glitch {
+	position: relative;
+	display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+	content: attr(data-text);
+	position: absolute;
+	inset: 0;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	text-transform: inherit;
+	line-height: inherit;
+}
+
+.glitch::before {
+	color: var(--color-red-hi);
+	clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+	animation: glitch-before 9s infinite;
+}
+
+.glitch::after {
+	color: var(--color-yellow);
+	clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+	animation: glitch-after 9s infinite;
+	animation-delay: 0.05s;
+}
+
+@keyframes glitch-before {
+	0%,
+	86%,
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	87% {
+		transform: translateX(-4px);
+		opacity: 1;
+	}
+	88% {
+		transform: translateX(3px);
+		opacity: 1;
+	}
+	89% {
+		transform: translateX(-2px);
+		opacity: 1;
+	}
+	90% {
+		transform: translateX(0);
+		opacity: 0;
+	}
+}
+
+@keyframes glitch-after {
+	0%,
+	86%,
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	87% {
+		transform: translateX(4px);
+		opacity: 1;
+	}
+	88% {
+		transform: translateX(-3px);
+		opacity: 1;
+	}
+	89% {
+		transform: translateX(2px);
+		opacity: 1;
+	}
+	90% {
+		transform: translateX(0);
+		opacity: 0;
+	}
+}
+
+.pulse-active {
+	animation: pulse-active 2s ease-in-out infinite;
+}
+.pulse-warning {
+	animation: pulse-warning 2s ease-in-out infinite;
+}
+.pulse-danger {
+	animation: pulse-danger 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-active {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.6);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgba(0, 255, 102, 0);
+	}
+}
+
+@keyframes pulse-warning {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 94, 0, 0.6);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgba(255, 94, 0, 0);
+	}
+}
+
+@keyframes pulse-danger {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 34, 0, 0.6);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgba(255, 34, 0, 0);
+	}
+}
+
+.section {
+	padding: 4rem 3rem;
+}
+
+.section-divider {
+	border-top: 1px solid var(--color-line);
+}
+
+.serial {
+	font-family: var(--font-mono);
+	font-size: 0.65rem;
+	letter-spacing: 0.15em;
+	color: var(--color-dim);
+	text-transform: uppercase;
+}
