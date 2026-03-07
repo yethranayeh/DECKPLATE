@@ -14,6 +14,8 @@
 
 	--font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
 	--font-mono: "Share Tech Mono", "Courier New", monospace;
+
+	--text-xxs: 10px;
 }
 
 @utility stripe {

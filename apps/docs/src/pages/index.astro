@@ -1,40 +1,77 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const wordSalads = [
+	{ key: "DOCUMENT", val: "DKP-2026-001" },
+	{ key: "REVISION", val: "4.2" },
+	{ key: "VERSION", val: "0.0.0" },
+	{ key: "YEAR", val: "2026" },
+	{ key: "CLASSIFICATION", val: "OPEN" }
+];
+const referenceSections = [
+	{
+		href: "/colors",
+		num: "01",
+		title: "COLORS",
+		desc: "9 color options. Usage protocols, approved pairings, and violation examples."
+	}
+];
 ---
 
 <Layout title='Overview' serial='DOC# DKP-2026-001' classification='OPEN'>
-	<section class='grid-overlay py-16 px-14 space-y-10 border-b border-line'>
-		<p class='text-orange font-thin tracking-[0.15em]'>
+	<section class='grid-overlay py-8 px-6 md:py-14 md:px-10 space-y-5 md:space-y-10 border-b border-line'>
+		<p class='text-orange font-thin tracking-widest text-sm md:text-base'>
 			DOC# DKP-2026-001 // CLASSIFICATION: OPEN // DESIGN SYSTEM REFERENCE
 		</p>
 		<div>
 			<div class='space-y-1'>
-				<h1 class='glitch font-display text-[clamp(3rem,10vw,7.5rem)] leading-[0.88] font-black tracking-wide'>
+				<h1 class='glitch font-display text-[clamp(4rem,10vw,7.5rem)] leading-[0.88] font-black tracking-wide'>
 					DECK<em class='not-italic text-orange'>PLATE</em>
 				</h1>
 				<p class='font-display font-semibold text-orange tracking-[0.06em]'>INDUSTRIAL DESIGN SYSTEM</p>
 			</div>
 
-			<div class='space-y-2 font-mono text-sm tracking-widest text-dim max-w-prose normal-case'>
+			<div class='space-y-2 font-mono text-sm tracking-wide text-dim max-w-prose normal-case'>
 				<p class='mt-6'>
 					A high-contrast industrial design system for industrial, robotics, and factory automation contexts.
 				</p>
 				<p>Bold condensed type, strict orange/black/yellow/red palette, and industrial-grade component discipline.</p>
 			</div>
 		</div>
-		<div class='flex flex-wrap gap-8 font-mono text-xs text-dim tracking-[0.15em]'>
+		<div class='flex flex-wrap gap-y-3 gap-x-8 font-mono text-xs text-dim tracking-widest'>
 			{
-				[
-					{ key: "DOCUMENT", val: "DKP-2026-001" },
-					{ key: "REVISION", val: "4.2" },
-					{ key: "VERSION", val: "0.0.0" },
-					{ key: "YEAR", val: "2026" },
-					{ key: "CLASSIFICATION", val: "OPEN" }
-				].map((m) => (
-					<div class='flex flex-col gap-1'>
+				wordSalads.map((m) => (
+					<div class='flex flex-col gap-0 md:gap-1'>
 						<span class='text-xs text-orange'>{m.key}</span>
 						<span>{m.val}</span>
 					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<section class='border-b border-line p-10 space-y-5 md:space-y-10'>
+		<div class='space-y-2'>
+			<p class='font-mono text-orange flex items-center gap-4'>
+				REFERENCE SECTION
+				<span class='flex-1 max-w-50 h-px bg-line'></span>
+			</p>
+			<h2 class='font-display tracking-wide'>SYSTEM INDEX</h2>
+		</div>
+		<div class='grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-0 bg-line border border-line'>
+			{
+				referenceSections.map((card) => (
+					<a
+						href={card.href}
+						class='bg-black no-underline p-8 flex flex-col gap-3 border border-line transition-[background] duration-100 hover:bg-black/60 group'>
+						<span class='serial text-orange'>{card.num}</span>
+						<span class='font-display font-black leading-none'>{card.title}</span>
+						<span class='text-xs tracking-widest text-dim normal-case flex-1'>{card.desc}</span>
+						<p class='text-xs tracking-widest text-line transition-colors duration-100 group-hover:text-orange'>
+							<span>VIEW SECTION</span>
+							<span class='inline-block transition-all group-hover:translate-x-2'>{">"}</span>
+						</p>
+					</a>
 				))
 			}
 		</div>

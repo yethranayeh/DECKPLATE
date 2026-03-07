@@ -1,0 +1,17 @@
+---
+interface Props {
+	id?: string;
+	title: string;
+	description: string;
+}
+
+const { props } = Astro;
+---
+
+<div id={props.id} class='space-y-2'>
+	<p class='font-mono text-orange flex items-center gap-4'>
+		{props.description}
+		<span class='flex-1 max-w-50 h-px bg-line'></span>
+	</p>
+	<h2 class='font-display tracking-wide'>{props.title}</h2>
+</div>

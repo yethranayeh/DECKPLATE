@@ -4,6 +4,10 @@ interface Props {
 	classification: string;
 }
 const { serial, classification } = Astro.props;
+
+const navItems = [{ href: "/colors", label: "Colors" }];
+
+const current = Astro.url.pathname;
 ---
 
 <nav class='sticky top-0 z-100 bg-black/96 backdrop-blur-sm border-b border-line flex items-stretch h-11 shrink-0'>
@@ -12,6 +16,24 @@ const { serial, classification } = Astro.props;
 		class='serial text-orange no-underline px-6 flex items-center border-r border-line shrink-0 hover:text-off-white transition-colors'>
 		DECKPLATE
 	</a>
+
+	<div class='flex flex-1 overflow-x-auto [scrollbar-width:none]'>
+		{
+			navItems.map((item) => (
+				<a
+					href={item.href}
+					class:list={[
+						"serial no-underline px-5 flex items-center border-r border-line shrink-0 transition-colors",
+						{
+							"text-orange bg-orange/7": current === item.href,
+							"text-dim hover:text-off-white hover:bg-orange/4": current !== item.href
+						}
+					]}>
+					{item.label}
+				</a>
+			))
+		}
+	</div>
 
 	<span class='serial px-6 border-l border-line flex items-center shrink-0'>
 		{serial} // {classification}

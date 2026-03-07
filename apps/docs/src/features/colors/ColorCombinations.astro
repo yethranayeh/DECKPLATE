@@ -1,0 +1,45 @@
+---
+import SectionHeader from "../../components/SectionHeader.astro";
+
+const pairings = [
+	{
+		bg: "bg-orange",
+		fg: "text-black",
+		labelColor: "text-black/45",
+		label: "BURN ORANGE / BLACK",
+		example: "DEPLOY NOW"
+	},
+	{ bg: "bg-black", fg: "text-orange", labelColor: "text-orange/50", label: "BLACK / ORANGE", example: "DEPLOY NOW" },
+	{
+		bg: "bg-black",
+		fg: "text-off-white",
+		labelColor: "text-off-white/45",
+		label: "BLACK / AGED WHITE",
+		example: "AUTHORIZED"
+	},
+	{ bg: "bg-yellow", fg: "text-black", labelColor: "text-black/45", label: "YELLOW / BLACK", example: "WARNING" },
+	{
+		bg: "bg-red",
+		fg: "text-off-white",
+		labelColor: "text-off-white/45",
+		label: "ALERT RED / WHITE",
+		example: "EMERGENCY"
+	},
+	{ bg: "bg-black", fg: "text-red-hi", labelColor: "text-red-hi/40", label: "BLACK / HOT RED", example: "CRITICAL" }
+];
+---
+
+<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
+	<SectionHeader title='Color Pairings' description='Canonical Combinations' />
+
+	<div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-px bg-line border border-line'>
+		{
+			pairings.map((p) => (
+				<div class={`flex flex-col justify-between gap-4 p-8 min-h-30 ${p.bg}`}>
+					<span class={`font-mono text-[0.52rem] tracking-[0.18em] leading-normal ${p.labelColor}`}>{p.label}</span>
+					<span class={`text-[1.1rem] font-black leading-tight ${p.fg}`}>{p.example}</span>
+				</div>
+			))
+		}
+	</div>
+</section>

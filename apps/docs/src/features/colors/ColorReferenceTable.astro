@@ -1,0 +1,48 @@
+---
+import SectionHeader from "../../components/SectionHeader.astro";
+import tokens from "../../data/tokens.json";
+const { palette } = tokens;
+
+const darkTokens = new Set(["--black", "--line", "--surface"]);
+const tokenToBg = (t: string) => `bg-${t.replace("--", "")}`;
+const tokenToText = (t: string) => `text-${t.replace("--", "")}`;
+---
+
+<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
+	<SectionHeader title='Token Table' description='Quick Reference' />
+
+	<table class='w-full border-collapse font-mono'>
+		<thead>
+			<tr class='border-b border-orange'>
+				{
+					["CSS Token", "Name", "Hex", "Role"].map((header) => (
+						<th class='text-left py-2.5 px-4 text-sm tracking-widest leading-normal text-orange'> {header} </th>
+					))
+				}
+			</tr>
+		</thead>
+		<tbody>
+			{
+				palette.map((c) => {
+					const roleTextClass = darkTokens.has(c.token) ? "text-off-white" : tokenToText(c.token);
+
+					return (
+						<tr class='border-b border-line hover:bg-orange/3'>
+							<td class='py-2.5 px-4 text-xs tracking-widest leading-normal normal-case'>
+								<span
+									class={`inline-block w-2.5 h-2.5 rounded-full align-middle mr-2 border border-off-white/15 ${tokenToBg(c.token)}`}
+								/>
+								{c.token}
+							</td>
+							<td class='py-2.5 px-4 text-xs tracking-widest leading-normal'>{c.name.toUpperCase()}</td>
+							<td class='py-2.5 px-4 text-xs tracking-normal leading-normal normal-case'>{c.hex}</td>
+							<td class={`py-2.5 px-4 text-xs tracking-widest leading-normal normal-case ${roleTextClass}`}>
+								{c.role}
+							</td>
+						</tr>
+					);
+				})
+			}
+		</tbody>
+	</table>
+</section>
