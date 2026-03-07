@@ -1,7 +1,5 @@
 /* DECKPLATE v0.0.0 */
 
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,800&family=Share+Tech+Mono&display=swap");
-
 @theme {
 	--color-orange: #ff5e00;
 	--color-yellow: #ffd600;
@@ -16,30 +14,148 @@
 
 	--font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
 	--font-mono: "Share Tech Mono", "Courier New", monospace;
+}
 
-	--text-display: clamp(3rem, 10vw, 7.5rem);
-	--text-display--line-height: 0.88;
-	--text-xl: clamp(2rem, 6vw, 4.5rem);
-	--text-xl--line-height: 0.92;
-	--text-lg: clamp(1.4rem, 3.5vw, 2.8rem);
-	--text-lg--line-height: 1;
-	--text-md: 1.15rem;
-	--text-md--line-height: 1.1;
-	--text-sm: 0.8rem;
-	--text-sm--line-height: 1.2;
-	--text-mono: 0.65rem;
-	--text-mono--line-height: 1.6;
+@utility stripe {
+	background: repeating-linear-gradient(
+		-45deg,
+		var(--color-orange) 0px,
+		var(--color-orange) 8px,
+		var(--color-black) 8px,
+		var(--color-black) 16px
+	);
+}
 
-	--tracking-display: 0.06em;
-	--tracking-xl: 0.06em;
-	--tracking-lg: 0.08em;
-	--tracking-md: 0.18em;
-	--tracking-sm: 0.22em;
-	--tracking-mono: 0.15em;
+@utility stripe-sm {
+	height: 6px;
+}
 
-	--radius-none: 0px;
-	--radius-sm: 0px;
-	--radius-md: 0px;
-	--radius-lg: 0px;
-	--radius-full: 9999px;
+@utility stripe-md {
+	height: 10px;
+}
+
+@utility stripe-lg {
+	height: 16px;
+}
+
+@utility stripe-restricted {
+	background: repeating-linear-gradient(
+		-45deg,
+		rgba(255, 214, 0, 0.055) 0px,
+		rgba(255, 214, 0, 0.055) 8px,
+		transparent 8px,
+		transparent 20px
+	);
+}
+
+@utility grid-overlay {
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background:
+			repeating-linear-gradient(
+				90deg,
+				rgba(255, 94, 0, 0.04) 0,
+				rgba(255, 94, 0, 0.04) 1px,
+				transparent 1px,
+				transparent 48px
+			),
+			repeating-linear-gradient(
+				0deg,
+				rgba(255, 94, 0, 0.04) 0,
+				rgba(255, 94, 0, 0.04) 1px,
+				transparent 1px,
+				transparent 48px
+			);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	& > * {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+@utility glitch {
+	animation: glitch 10s infinite;
+}
+
+@utility pulse-active {
+	animation: pulse-active 2s ease-in-out infinite;
+}
+
+@utility pulse-warning {
+	animation: pulse-warning 2s ease-in-out infinite;
+}
+
+@utility pulse-danger {
+	animation: pulse-danger 1.4s ease-in-out infinite;
+}
+
+@utility serial {
+	font-family: var(--font-mono);
+	font-size: 0.65rem;
+	letter-spacing: 0.15em;
+	color: var(--color-dim);
+	text-transform: uppercase;
+}
+
+@keyframes glitch {
+	0%,
+	86%,
+	100% {
+		text-shadow: none;
+		transform: none;
+	}
+	87% {
+		text-shadow:
+			4px 0 var(--color-red-hi),
+			-4px 0 var(--color-yellow);
+		transform: skewX(-2deg);
+	}
+	88% {
+		text-shadow:
+			-3px 0 var(--color-red-hi),
+			3px 0 var(--color-yellow);
+		transform: skewX(1deg);
+	}
+	89% {
+		text-shadow: none;
+		transform: none;
+	}
+}
+
+@keyframes pulse-active {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.6);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgba(0, 255, 102, 0);
+	}
+}
+
+@keyframes pulse-warning {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 94, 0, 0.6);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgba(255, 94, 0, 0);
+	}
+}
+
+@keyframes pulse-danger {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 34, 0, 0.6);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgba(255, 34, 0, 0);
+	}
 }

@@ -4,14 +4,10 @@
 	"private": false,
 	"description": "DECKPLATE Tailwind theme",
 	"exports": {
-		".": "./globals.css",
-		"./theme": "./theme.css",
-		"./motifs": "./motifs.css"
+		".": "./theme.css"
 	},
 	"files": [
-		"globals.css",
-		"theme.css",
-		"motifs.css"
+		"theme.css"
 	],
 	"keywords": [
 		"deckplate",

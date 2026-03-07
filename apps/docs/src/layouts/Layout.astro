@@ -1,0 +1,45 @@
+---
+import "../app.css";
+import Nav from "../components/Nav.astro";
+
+interface Props {
+	title: string;
+	serial?: string;
+	classification?: string;
+}
+
+const { title, serial = "DOC# DKP-2026-UNIT", classification = "ACTIVE" } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+		<title>{title} | DECKPLATE</title>
+		<link rel='preconnect' href='https://fonts.googleapis.com' />
+		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+		<link
+			href='https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,800&family=Share+Tech+Mono&display=swap'
+			rel='stylesheet'
+		/>
+	</head>
+	<body>
+		<div class='stripe stripe-md' aria-hidden='true'></div>
+
+		<Nav serial={serial} classification={classification} />
+
+		<main class='flex-1'>
+			<slot />
+		</main>
+
+		<div class='stripe stripe-md' aria-hidden='true'></div>
+
+		<footer class='px-12 py-6 flex justify-between items-center flex-wrap gap-2'>
+			<span class='serial'>DECKPLATE // MIL-SPEC STRICT ADHERENCE</span>
+			<span class='serial'
+				>UNIT: DOC-SERVER-01 // DEPT: OPTICS AND DESIGN // STATUS: [NOMINAL] // SYS.OP LOG ACTIVE</span
+			>
+		</footer>
+	</body>
+</html>

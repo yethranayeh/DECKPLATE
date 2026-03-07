@@ -1,0 +1,19 @@
+---
+interface Props {
+	serial: string;
+	classification: string;
+}
+const { serial, classification } = Astro.props;
+---
+
+<nav class='sticky top-0 z-100 bg-black/96 backdrop-blur-sm border-b border-line flex items-stretch h-11 shrink-0'>
+	<a
+		href='/'
+		class='serial text-orange no-underline px-6 flex items-center border-r border-line shrink-0 hover:text-off-white transition-colors'>
+		DECKPLATE
+	</a>
+
+	<span class='serial px-6 border-l border-line flex items-center shrink-0'>
+		{serial} // {classification}
+	</span>
+</nav>

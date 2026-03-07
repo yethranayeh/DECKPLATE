@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title='Overview' serial='DOC# DKP-2026-001' classification='OPEN'>
+	<section class='grid-overlay py-16 px-14 space-y-10 border-b border-line'>
+		<p class='text-orange font-thin tracking-[0.15em]'>
+			DOC# DKP-2026-001 // CLASSIFICATION: OPEN // DESIGN SYSTEM REFERENCE
+		</p>
+		<div>
+			<div class='space-y-1'>
+				<h1 class='glitch font-display text-[clamp(3rem,10vw,7.5rem)] leading-[0.88] font-black tracking-wide'>
+					DECK<em class='not-italic text-orange'>PLATE</em>
+				</h1>
+				<p class='font-display font-semibold text-orange tracking-[0.06em]'>INDUSTRIAL DESIGN SYSTEM</p>
+			</div>
+
+			<div class='space-y-2 font-mono text-sm tracking-widest text-dim max-w-prose normal-case'>
+				<p class='mt-6'>
+					A high-contrast industrial design system for industrial, robotics, and factory automation contexts.
+				</p>
+				<p>Bold condensed type, strict orange/black/yellow/red palette, and industrial-grade component discipline.</p>
+			</div>
+		</div>
+		<div class='flex flex-wrap gap-8 font-mono text-xs text-dim tracking-[0.15em]'>
+			{
+				[
+					{ key: "DOCUMENT", val: "DKP-2026-001" },
+					{ key: "REVISION", val: "4.2" },
+					{ key: "VERSION", val: "0.0.0" },
+					{ key: "YEAR", val: "2026" },
+					{ key: "CLASSIFICATION", val: "OPEN" }
+				].map((m) => (
+					<div class='flex flex-col gap-1'>
+						<span class='text-xs text-orange'>{m.key}</span>
+						<span>{m.val}</span>
+					</div>
+				))
+			}
+		</div>
+	</section>
+</Layout>

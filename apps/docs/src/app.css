@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "@deckplate/theme";
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background: var(--color-black);
+		color: var(--color-off-white);
+		font-family: var(--font-display);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		line-height: 1;
+		overflow-x: hidden;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"tailwindCSS.includeLanguages": {
+		"typescriptreact": "html"
+	},
+	"tailwindCSS.experimental.configFile": "./apps/docs/src/app.css"
+}
