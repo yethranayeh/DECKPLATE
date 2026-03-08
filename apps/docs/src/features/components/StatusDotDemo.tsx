@@ -23,7 +23,7 @@ export function StatusDotDemo() {
 						{(["sm", "sm", "md", "lg"] as const).map((size, i) => (
 							<StatusDot
 								aria-label={label}
-								key={size}
+								key={`${size}-${i}`}
 								pulse={i === 0}
 								variant={variant}
 								size={size}
