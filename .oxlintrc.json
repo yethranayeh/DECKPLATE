@@ -1,0 +1,17 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"categories": {
+		"correctness": "error",
+		"suspicious": "warn",
+		"pedantic": "off"
+	},
+	"plugins": ["typescript", "react", "import"],
+	"rules": {
+		"typescript/no-explicit-any": "error",
+		"no-console": "warn",
+		"react/react-in-jsx-scope": "off",
+		"import/no-unassigned-import": "off",
+		"typescript/triple-slash-reference": "off"
+	},
+	"ignorePatterns": ["dist/", "node_modules/", "*.config.*"]
+}

@@ -3,18 +3,18 @@
 	"version": "0.0.0",
 	"private": false,
 	"description": "DECKPLATE Tailwind theme",
-	"exports": {
-		".": "./theme.css"
-	},
+	"keywords": [
+		"cyber-industrial",
+		"deckplate",
+		"design-tokens",
+		"high-contrast",
+		"tailwind"
+	],
+	"license": "MIT",
 	"files": [
 		"theme.css"
 	],
-	"keywords": [
-		"deckplate",
-		"design-tokens",
-		"tailwind",
-		"cyber-industrial",
-		"high-contrast"
-	],
-	"license": "MIT"
+	"exports": {
+		".": "./theme.css"
+	}
 }

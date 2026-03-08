@@ -1,16 +1,21 @@
 {
 	"name": "deckplate",
-	"private": true,
 	"version": "0.0.0",
+	"private": true,
 	"scripts": {
 		"build": "pnpm -r build",
 		"dev": "pnpm -r --parallel dev",
-		"lint": "pnpm -r lint",
+		"lint": "oxlint .",
+		"lint:fix": "oxlint --fix .",
+		"format": "oxfmt .",
+		"format:check": "oxfmt --check .",
 		"build:docs": "pnpm -F=docs run build",
 		"dev:docs": "pnpm -F=docs run dev",
 		"typecheck": "pnpm -r typecheck"
 	},
 	"devDependencies": {
+		"oxfmt": "^0.36.0",
+		"oxlint": "^1.51.0",
 		"typescript": "^5.5.0"
 	}
 }

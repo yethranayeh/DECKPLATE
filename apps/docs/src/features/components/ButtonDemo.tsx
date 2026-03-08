@@ -9,45 +9,45 @@ import { Button } from "@/ui/button";
  */
 export function ButtonDemo() {
 	return (
-		<div className='flex flex-col gap-8'>
+		<div className="flex flex-col gap-8">
 			<div>
-				<p className='font-mono text-xs text-dim tracking-widest uppercase mb-4'>Variants</p>
-				<div className='flex flex-wrap gap-3'>
-					<Button variant='primary'>Deploy Unit</Button>
-					<Button variant='danger'>Emergency Stop</Button>
-					<Button variant='outline'>Initialize</Button>
-					<Button variant='ghost'>Cancel</Button>
+				<p className="text-dim mb-4 font-mono text-xs tracking-widest uppercase">Variants</p>
+				<div className="flex flex-wrap gap-3">
+					<Button variant="primary">Deploy Unit</Button>
+					<Button variant="danger">Emergency Stop</Button>
+					<Button variant="outline">Initialize</Button>
+					<Button variant="ghost">Cancel</Button>
 				</div>
 			</div>
 
 			<div>
-				<p className='font-mono text-xs text-dim tracking-widest uppercase mb-4'>Sizes</p>
-				<div className='flex flex-wrap items-end gap-3'>
-					<Button variant='primary' size='sm'>
+				<p className="text-dim mb-4 font-mono text-xs tracking-widest uppercase">Sizes</p>
+				<div className="flex flex-wrap items-end gap-3">
+					<Button variant="primary" size="sm">
 						Engage
 					</Button>
-					<Button variant='primary' size='md'>
+					<Button variant="primary" size="md">
 						Engage
 					</Button>
-					<Button variant='primary' size='lg'>
+					<Button variant="primary" size="lg">
 						Engage
 					</Button>
 				</div>
 			</div>
 
 			<div>
-				<p className='font-mono text-xs text-dim tracking-widest uppercase mb-4'>Disabled</p>
-				<div className='flex flex-wrap gap-3'>
-					<Button variant='primary' disabled>
+				<p className="text-dim mb-4 font-mono text-xs tracking-widest uppercase">Disabled</p>
+				<div className="flex flex-wrap gap-3">
+					<Button variant="primary" disabled>
 						Offline
 					</Button>
-					<Button variant='danger' disabled>
+					<Button variant="danger" disabled>
 						Offline
 					</Button>
-					<Button variant='outline' disabled>
+					<Button variant="outline" disabled>
 						Offline
 					</Button>
-					<Button variant='ghost' disabled>
+					<Button variant="ghost" disabled>
 						Offline
 					</Button>
 				</div>
