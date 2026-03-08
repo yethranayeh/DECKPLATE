@@ -12,6 +12,7 @@ const buttonVariants = cva(
 		"border border-transparent",
 		"cursor-pointer select-none",
 		"transition-colors duration-150",
+		"focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange",
 		"disabled:opacity-40 disabled:cursor-not-allowed"
 	],
 	{

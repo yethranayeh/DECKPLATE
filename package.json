@@ -3,6 +3,9 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
+		"build": "pnpm -r build",
+		"dev": "pnpm -r --parallel dev",
+		"lint": "pnpm -r lint",
 		"build:docs": "pnpm -F=docs run build",
 		"dev:docs": "pnpm -F=docs run dev",
 		"typecheck": "pnpm -r typecheck"
