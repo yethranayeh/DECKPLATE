@@ -15,6 +15,7 @@
 	}
 
 	body {
+		--font-body: Arial, Helvetica, sans-serif;
 		background: var(--color-black);
 		color: var(--color-off-white);
 		font-family: var(--font-display);
@@ -26,5 +27,13 @@
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
+	}
+
+	.prose {
+		font-family: var(--font-body);
+		font-weight: 400;
+		text-transform: none;
+		letter-spacing: normal;
+		line-height: 1.6;
 	}
 }

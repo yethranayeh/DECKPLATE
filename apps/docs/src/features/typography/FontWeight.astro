@@ -1,0 +1,16 @@
+---
+interface Props {
+	weight: number;
+}
+
+const { weight } = Astro.props;
+---
+
+<div class='flex items-center px-6 py-4 border-b border-line last:border-b-0 gap-8'>
+	<span class='font-mono text-[10px] text-dim tracking-[0.15em] leading-normal w-20 shrink-0'>
+		WEIGHT {weight}
+	</span>
+	<span class='font-display leading-none' style={`font-weight:${weight}; font-size: clamp(1.2rem, 3vw, 2rem);`}>
+		MACRO-TELEMETRY REFINEMENT
+	</span>
+</div>

@@ -5,7 +5,10 @@ interface Props {
 }
 const { serial, classification } = Astro.props;
 
-const navItems = [{ href: "/colors", label: "Colors" }];
+const navItems = [
+	{ href: "/colors", label: "Colors" },
+	{ href: "/typography", label: "Typography" }
+];
 
 const current = Astro.url.pathname;
 ---

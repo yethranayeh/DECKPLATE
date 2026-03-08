@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import tokens from "../data/tokens.json";
+import SectionHeader from "../components/SectionHeader.astro";
+import FontFamilyCard from "../features/typography/FontFamilyCard.astro";
+import TypeScale from "../features/typography/TypeScale.astro";
+import FontWeight from "../features/typography/FontWeight.astro";
+
+const { fonts, scale } = tokens.typography;
+---
+
+<Layout title='Typography' serial='DOC# DKP-2026-003' classification='OPEN'>
+	<PageHeader serial='02 // TYPOGRAPHY' title='TYPOGRAPHY' tagline='TYPE SCALE & FONT RULES' />
+
+	<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
+		<SectionHeader title='Font Families' description='Typefaces' />
+
+		<div class='grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6'>
+			{fonts.map((f) => <FontFamilyCard font={f} />)}
+		</div>
+	</section>
+
+	<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
+		<SectionHeader title='Body Text' description='Advisory' />
+
+		<!-- TODO: Replace with Alert component -->
+		<div class='border border-yellow p-6 md:p-8 space-y-4'>
+			<p class='prose text-sm text-off-white'>
+				This system is designed for interface labels, status readouts, and display compositions. It does not define a <em
+					>body text</em
+				> style. <span class='font-display uppercase text-md font-bold'>Barlow Condensed</span> is always uppercase and <span
+					class='font-mono tracking-wide'>Share Tech Mono</span
+				> is reserved for technical data.
+			</p>
+			<p class='prose text-sm text-dim'>
+				If your application requires paragraphs, pair <span class='font-display uppercase text-md font-bold'
+					>DECKPLATE</span
+				> with a body typeface of your choice.
+			</p>
+		</div>
+	</section>
+
+	<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
+		<SectionHeader title='Type Scale' description='Scale' />
+
+		<div class='flex flex-col border border-line'>
+			{scale.map((s) => <TypeScale scale={s} />)}
+		</div>
+	</section>
+
+	<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
+		<SectionHeader title='Barlow Condensed Weight' description='Weight Spectrum' />
+
+		<div class='flex flex-col border border-line'>
+			{[300, 400, 600, 700, 800, 900].map((w) => <FontWeight weight={w} />)}
+		</div>
+	</section>
+</Layout>

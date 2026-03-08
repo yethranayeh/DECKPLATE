@@ -1,0 +1,50 @@
+---
+interface Scale {
+	name: string;
+	class: string;
+	size: string;
+	weight: number;
+	tracking: string;
+	lineHeight: string;
+	color: string;
+	sampleText: string;
+	usage: string;
+	font?: string;
+}
+
+interface Props {
+	scale: Scale;
+}
+
+const { scale } = Astro.props;
+const fontFamily = scale.font
+	? "'Share Tech Mono', 'Courier New', monospace"
+	: "'Barlow Condensed', 'Arial Narrow', sans-serif";
+---
+
+<div class='grid grid-cols-[140px_1fr] border-b border-line last:border-b-0' style='grid-template-rows: auto auto;'>
+	<div class='p-4 border-r border-line flex flex-col justify-center gap-2 bg-surface'>
+		<span class='text-sm font-black tracking-widest leading-tight'>{scale.name.toUpperCase()}</span>
+		<div class='font-mono text-[10px] tracking-widest text-dim normal-case leading-snug'>
+			<span class='text-orange'>{scale.size}</span>
+			<br />
+			Weight: <span class='text-orange'>{scale.weight}</span>
+			<br />
+			Track: <span class='text-orange'>{scale.tracking}</span>
+			<br />
+			LH: <span class='text-orange'>{scale.lineHeight}</span>
+		</div>
+	</div>
+
+	<div class='p-6 flex items-center overflow-hidden'>
+		<span
+			style={`font-family:${fontFamily}; font-size:${scale.size}; font-weight:${scale.weight}; letter-spacing:${scale.tracking}; line-height:${scale.lineHeight}; text-transform:uppercase; color:${scale.color}; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%;`}>
+			{scale.sampleText}
+		</span>
+	</div>
+
+	<div
+		class='col-span-full border-t border-line bg-surface px-6 py-3.5 text-sm tracking-normal text-dim normal-case font-normal leading-relaxed'>
+		{scale.usage}
+	</div>
+</div>
