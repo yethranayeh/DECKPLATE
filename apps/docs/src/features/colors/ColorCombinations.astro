@@ -1,5 +1,5 @@
 ---
-import SectionHeader from "../../components/SectionHeader.astro";
+import SectionLayout from "../../layouts/SectionLayout.astro";
 
 const pairings = [
 	{
@@ -29,9 +29,7 @@ const pairings = [
 ];
 ---
 
-<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
-	<SectionHeader title='Color Pairings' description='Canonical Combinations' />
-
+<SectionLayout title='Color Pairings' description='Canonical Combinations'>
 	<div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-px bg-line border border-line'>
 		{
 			pairings.map((p) => (
@@ -42,4 +40,4 @@ const pairings = [
 			))
 		}
 	</div>
-</section>
+</SectionLayout>

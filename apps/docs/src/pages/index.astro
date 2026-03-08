@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
 
 const wordSalads = [
 	{ key: "DOCUMENT", val: "DKP-2026-001" },
@@ -56,14 +57,7 @@ const referenceSections = [
 		</div>
 	</section>
 
-	<section class='border-b border-line p-10 space-y-5 md:space-y-10'>
-		<div class='space-y-2'>
-			<p class='font-mono text-orange flex items-center gap-4'>
-				REFERENCE SECTIONS
-				<span class='flex-1 max-w-50 h-px bg-line'></span>
-			</p>
-			<h2 class='font-display tracking-wide'>SYSTEM INDEX</h2>
-		</div>
+	<SectionLayout title='System Index' description='Reference Sections'>
 		<div class='grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-0 bg-line border border-line'>
 			{
 				referenceSections.map((card) => (
@@ -81,5 +75,5 @@ const referenceSections = [
 				))
 			}
 		</div>
-	</section>
+	</SectionLayout>
 </Layout>

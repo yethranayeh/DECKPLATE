@@ -1,6 +1,7 @@
 ---
-import SectionHeader from "../../components/SectionHeader.astro";
 import tokens from "../../data/tokens.json";
+import SectionLayout from "../../layouts/SectionLayout.astro";
+
 const { palette } = tokens;
 
 const darkTokens = new Set(["--black", "--line", "--surface"]);
@@ -8,9 +9,7 @@ const tokenToBg = (t: string) => `bg-${t.replace("--", "")}`;
 const tokenToText = (t: string) => `text-${t.replace("--", "")}`;
 ---
 
-<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
-	<SectionHeader title='Token Table' description='Quick Reference' />
-
+<SectionLayout title='Token Table' description='Quick Reference'>
 	<table class='w-full border-collapse font-mono'>
 		<thead>
 			<tr class='border-b border-orange'>
@@ -45,4 +44,4 @@ const tokenToText = (t: string) => `text-${t.replace("--", "")}`;
 			}
 		</tbody>
 	</table>
-</section>
+</SectionLayout>

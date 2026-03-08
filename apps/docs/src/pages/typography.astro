@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+
 import PageHeader from "../components/PageHeader.astro";
-import tokens from "../data/tokens.json";
-import SectionHeader from "../components/SectionHeader.astro";
 import FontFamilyCard from "../features/typography/FontFamilyCard.astro";
 import TypeScale from "../features/typography/TypeScale.astro";
 import FontWeight from "../features/typography/FontWeight.astro";
+
+import tokens from "../data/tokens.json";
 
 const { fonts, scale } = tokens.typography;
 ---
@@ -13,17 +15,13 @@ const { fonts, scale } = tokens.typography;
 <Layout title='Typography' serial='DOC# DKP-2026-003' classification='OPEN'>
 	<PageHeader serial='02 // TYPOGRAPHY' title='TYPOGRAPHY' tagline='TYPE SCALE & FONT RULES' />
 
-	<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
-		<SectionHeader title='Font Families' description='Typefaces' />
-
+	<SectionLayout title='Font Families' description='Typefaces'>
 		<div class='grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6'>
 			{fonts.map((f) => <FontFamilyCard font={f} />)}
 		</div>
-	</section>
+	</SectionLayout>
 
-	<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
-		<SectionHeader title='Body Text' description='Advisory' />
-
+	<SectionLayout title='Body Text' description='Advisory'>
 		<!-- TODO: Replace with Alert component -->
 		<div class='border border-yellow p-6 md:p-8 space-y-4'>
 			<p class='prose text-sm text-off-white'>
@@ -36,24 +34,22 @@ const { fonts, scale } = tokens.typography;
 			<p class='prose text-sm text-dim'>
 				If your application requires paragraphs, pair <span class='font-display uppercase text-md font-bold'
 					>DECKPLATE</span
-				> with a body typeface of your choice.
+				> with a body typeface of your choice. Please note that the CLI installation method does not impose <span
+					class='underline'>any</span
+				> font imports, so it is completely up to you to adhere to these recommendations.
 			</p>
 		</div>
-	</section>
+	</SectionLayout>
 
-	<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
-		<SectionHeader title='Type Scale' description='Scale' />
-
+	<SectionLayout title='Type Scale' description='Scale'>
 		<div class='flex flex-col border border-line'>
 			{scale.map((s) => <TypeScale scale={s} />)}
 		</div>
-	</section>
+	</SectionLayout>
 
-	<section class='py-8 px-6 md:py-16 md:px-14 border-b border-line space-y-5 md:space-y-10'>
-		<SectionHeader title='Barlow Condensed Weight' description='Weight Spectrum' />
-
+	<SectionLayout title='Barlow Condensed Weight' description='Weight Spectrum'>
 		<div class='flex flex-col border border-line'>
 			{[300, 400, 600, 700, 800, 900].map((w) => <FontWeight weight={w} />)}
 		</div>
-	</section>
+	</SectionLayout>
 </Layout>

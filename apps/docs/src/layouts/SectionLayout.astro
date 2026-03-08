@@ -1,0 +1,15 @@
+---
+import type { SectionHeaderProps } from "../components/SectionHeader.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+interface Props extends SectionHeaderProps {}
+
+const { props } = Astro;
+---
+
+<section class='border-b border-line p-10 space-y-5 md:space-y-10'>
+	<!-- TODO: make section headers clickable by an id-based hash link (e.g. `props.id && <Hash id={props.id} />`) -->
+	<SectionHeader title={props.title} description={props.description} />
+
+	<slot />
+</section>
