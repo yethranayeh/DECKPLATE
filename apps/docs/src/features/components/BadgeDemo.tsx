@@ -7,19 +7,41 @@ export function BadgeDemo() {
 				<p className="text-dim mb-4 font-mono text-xs tracking-widest uppercase">
 					Outline variants
 				</p>
-				<div className="flex flex-wrap gap-3">
-					<Badge variant="outline-orange">Active</Badge>
-					<Badge variant="outline-red">Offline</Badge>
-					<Badge variant="outline-yellow">Standby</Badge>
-					<Badge variant="outline-white">Authorized</Badge>
+				<div className="space-y-2">
+					{[0, 1].map((dot) => (
+						<div key={dot} className="flex flex-wrap gap-3">
+							<Badge dot={!!dot} variant="outline-orange">
+								Active
+							</Badge>
+							<Badge dot={!!dot} variant="outline-red">
+								Offline
+							</Badge>
+							<Badge dot={!!dot} variant="outline-yellow">
+								Standby
+							</Badge>
+							<Badge dot={!!dot} variant="outline-white">
+								Authorized
+							</Badge>
+						</div>
+					))}
 				</div>
 			</div>
 			<div>
 				<p className="text-dim mb-4 font-mono text-xs tracking-widest uppercase">Fill variants</p>
-				<div className="flex flex-wrap gap-3">
-					<Badge variant="fill-orange">Field Tested</Badge>
-					<Badge variant="fill-red">Alert</Badge>
-					<Badge variant="fill-yellow">Warning</Badge>
+				<div className="space-y-2">
+					{[0, 1].map((dot) => (
+						<div key={dot} className="flex flex-wrap gap-3">
+							<Badge dot={!!dot} variant="fill-orange">
+								Field Tested
+							</Badge>
+							<Badge dot={!!dot} variant="fill-red">
+								Alert
+							</Badge>
+							<Badge dot={!!dot} variant="fill-yellow">
+								Warning
+							</Badge>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>

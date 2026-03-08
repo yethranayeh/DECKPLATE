@@ -31,14 +31,31 @@ const badgeVariants = cva(
 	},
 );
 
+const dotColor: Record<string, string> = {
+	"outline-orange": "bg-orange",
+	"outline-red": "bg-red-hi",
+	"outline-yellow": "bg-yellow",
+	"outline-white": "bg-off-white",
+	"fill-orange": "bg-black",
+	"fill-red": "bg-off-white",
+	"fill-yellow": "bg-black",
+};
+
+function BadgeDot({ variant }: { variant: BadgeProps["variant"] }) {
+	const color = dotColor[variant ?? "outline-orange"] ?? "bg-orange";
+	return <span className={cn("block h-1.5 w-1.5 rounded-full", color)} aria-hidden="true" />;
+}
+
 export interface BadgeProps
 	extends React.HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {
 	className?: string;
+	dot?: boolean;
 }
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-	({ variant, className, children, ...props }, ref) => (
+	({ variant, dot, className, children, ...props }, ref) => (
 		<span ref={ref} className={cn(badgeVariants({ variant, className }))} {...props}>
+			{dot && <BadgeDot variant={variant} />}
 			{children}
 		</span>
 	),
