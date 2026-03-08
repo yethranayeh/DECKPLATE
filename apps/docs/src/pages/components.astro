@@ -7,6 +7,7 @@ import PageHeader from "../components/PageHeader.astro";
 import { ButtonDemo } from "../features/components/ButtonDemo";
 import { BadgeDemo } from "../features/components/BadgeDemo";
 import { StatusDotDemo } from "../features/components/StatusDotDemo";
+import { ProgressBarDemo } from "../features/components/ProgressBarDemo";
 ---
 
 <Layout title='Components' serial='DOC# DKP-2026-003'>
@@ -109,5 +110,41 @@ import { StatusDotDemo } from "../features/components/StatusDotDemo";
 			}
 		]}>
 		<StatusDotDemo client:load />
+	</ComponentLayout>
+
+	<ComponentLayout
+		name='Progress Bar'
+		serial='CMP-004'
+		propDefinitions={[
+			{
+				name: "value",
+				type: "number",
+				default: "0",
+				description: "Progress value (0-100)"
+			},
+			{
+				name: "threshold",
+				type: "number",
+				default: "30",
+				description: "When `value <= threshold`, then the color turns red"
+			},
+			{
+				name: "hideValue",
+				type: "boolean",
+				default: "false",
+				description: "Optional prop to hide percentage value"
+			},
+			{
+				name: "label",
+				type: "string",
+				description: "Optional label text shown on top left of the bar"
+			},
+			{
+				name: "className",
+				type: "string",
+				description: "Additional arbitrary classes"
+			}
+		]}>
+		<ProgressBarDemo client:load />
 	</ComponentLayout>
 </Layout>
