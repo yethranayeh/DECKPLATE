@@ -6,6 +6,7 @@ import PageHeader from "../components/PageHeader.astro";
 
 import { ButtonDemo } from "../features/components/ButtonDemo";
 import { BadgeDemo } from "../features/components/BadgeDemo";
+import { StatusDotDemo } from "../features/components/StatusDotDemo";
 ---
 
 <Layout title='Components' serial='DOC# DKP-2026-003'>
@@ -60,5 +61,47 @@ import { BadgeDemo } from "../features/components/BadgeDemo";
 			}
 		]}>
 		<BadgeDemo client:load />
+	</ComponentLayout>
+
+	<ComponentLayout
+		name='Status Dot'
+		serial='CMP-003'
+		propDefinitions={[
+			{
+				name: "aria-label",
+				type: "string",
+				description: "Required prop to make it accessible for screen readers"
+			},
+			{
+				name: "variant",
+				type: "'active' | 'warning' | 'danger' | 'offline'",
+				default: "'offline'",
+				description: "Current status state"
+			},
+			{
+				name: "size",
+				type: "'sm' | 'md' | 'lg'",
+				default: "'md'",
+				description: "Size of the dot"
+			},
+			{
+				name: "pulse",
+				type: "boolean",
+				default: "false",
+				description: "Enables pulse animations. When enabled, disables glow."
+			},
+			{
+				name: "disableGlow",
+				type: "boolean",
+				default: "false",
+				description: "Disables the glow shadow"
+			},
+			{
+				name: "className",
+				type: "string",
+				description: "Additional arbitrary classes"
+			}
+		]}>
+		<StatusDotDemo client:load />
 	</ComponentLayout>
 </Layout>
