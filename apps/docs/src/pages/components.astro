@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ComponentLayout from "../layouts/ComponentLayout.astro";
+
+import PageHeader from "../components/PageHeader.astro";
+
+import { ButtonDemo } from "../features/components/ButtonDemo";
+---
+
+<Layout title='Components' serial='DOC# DKP-2026-003'>
+	<PageHeader title='Components' tagline='Operational UI Primitives' serial='03 // COMPONENT REGISTRY' />
+
+	<ComponentLayout
+		name='Button'
+		serial='CMP-001'
+		propDefinitions={[
+			{
+				name: "variant",
+				type: "'primary' | 'danger' | 'outline' | 'ghost'",
+				default: "'primary'",
+				description: "Visual style of the button"
+			},
+
+			{
+				name: "size",
+				type: "'sm' | 'md' | 'lg'",
+				default: "'md'",
+				description: "Size of the button"
+			},
+			{
+				name: "disabled",
+				type: "boolean",
+				default: "false",
+				description: "Disables the button"
+			},
+			{
+				name: "className",
+				type: "string",
+				description: "Additional arbitrary classes"
+			}
+		]}>
+		<ButtonDemo client:load />
+	</ComponentLayout>
+</Layout>

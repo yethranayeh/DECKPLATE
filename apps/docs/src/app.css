@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "@deckplate/theme";
 
+@source "../../../registry/ui";
+
 @layer base {
 	*,
 	*::before,
