@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
 	[
-		"inline-flex itmes-center justify-center gap-2",
+		"inline-flex items-center justify-center gap-2",
 		"font-display font-bold uppercase tracking-widest",
 		"border border-transparent",
 		"cursor-pointer select-none",
@@ -41,10 +41,13 @@ export interface ButtonProps
 	className?: string;
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	({ variant, size, className, children, ...props }, ref) => (
 		<button ref={ref} className={cn(buttonVariants({ variant, size, className }))} {...props}>
 			{children}
 		</button>
 	)
 );
+Button.displayName = "Button";
+
+export { Button };
