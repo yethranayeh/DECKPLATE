@@ -5,6 +5,7 @@ import ComponentLayout from "../layouts/ComponentLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 
 import { ButtonDemo } from "../features/components/ButtonDemo";
+import { BadgeDemo } from "../features/components/BadgeDemo";
 ---
 
 <Layout title='Components' serial='DOC# DKP-2026-003'>
@@ -40,5 +41,24 @@ import { ButtonDemo } from "../features/components/ButtonDemo";
 			}
 		]}>
 		<ButtonDemo client:load />
+	</ComponentLayout>
+
+	<ComponentLayout
+		name='Badge'
+		serial='CMP-002'
+		propDefinitions={[
+			{
+				name: "variant",
+				type: "'outline-orange' | 'outline-red' | 'outline-yellow' | 'outline-white' | 'fill-orange' | 'fill-red' | 'fill-yellow'",
+				default: "'outline-orange'",
+				description: "Visual style of the badge"
+			},
+			{
+				name: "className",
+				type: "string",
+				description: "Additional arbitrary classes"
+			}
+		]}>
+		<BadgeDemo client:load />
 	</ComponentLayout>
 </Layout>
