@@ -1,0 +1,62 @@
+---
+import SectionLayout from "../../layouts/SectionLayout.astro";
+
+const animationDefinitons = [
+	{ name: "Cycle Length", desc: "8-10 seconds" },
+	{ name: "Trigger At", desc: "Near the end of the cycle (e.g. 80%)" },
+	{ name: "Red Offset", desc: "translateX(-4px) -> translateX(3px) -> translateX(-2px)" },
+	{ name: "Yellow Offset", desc: "translateX(4px) -> translateX(-3px) -> translateX(2px)" }
+];
+const rules = [
+	"Hero title only. Never on body text or small labels.",
+	"Must not stay constant. Must feel like a glitch.",
+	"3 frames maximum per trigger.",
+	"Silence duration: 6-8 times longer than the glitch itself."
+];
+---
+
+<SectionLayout title='Glitch Effect' description='Special Effect'>
+	<div class='grid-overlay bg-black border border-line flex items-center justify-center py-16 px-6'>
+		<h2 class='glitch font-display font-black text-[clamp(3rem,10vw,7.5rem)] tracking-normal text-off-white'>
+			OVERRIDE
+		</h2>
+	</div>
+
+	<div class='mt-6 grid grid-cols-1 md:grid-cols-2 gap-6'>
+		<div class='border border-line'>
+			<div class='px-4 py-3 border-b border-line bg-surface'>
+				<span class='font-mono text-sm text-orange'>ANIMATION SPEC</span>
+			</div>
+			<table class='w-full'>
+				<tbody class='font-mono text-[0.6rem] tracking-widest normal-case'>
+					{
+						animationDefinitons.map((def) => (
+							<tr class='border-b border-line'>
+								<td class='px-4 py-3 text-orange'>{def.name}</td>
+								<td class='px-4 py-3 text-dim'>{def.desc}</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+
+		<div class='border border-line'>
+			<div class='px-4 py-3 border-b border-line bg-surface'>
+				<span class='font-mono text-sm text-orange'>RULES</span>
+			</div>
+			<table class='w-full'>
+				<tbody class='font-mono text-[0.6rem] tracking-widest normal-case'>
+					{
+						rules.map((rule, i) => (
+							<tr class='border-b border-line'>
+								<td class='px-4 py-3 text-orange whitespace-nowrap'>R-{String(i + 1).padStart(2, "0")}</td>
+								<td class='px-4 py-3 text-dim'>{rule}</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</SectionLayout>

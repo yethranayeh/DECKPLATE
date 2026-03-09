@@ -26,18 +26,6 @@
 	);
 }
 
-@utility stripe-sm {
-	height: 6px;
-}
-
-@utility stripe-md {
-	height: 10px;
-}
-
-@utility stripe-lg {
-	height: 16px;
-}
-
 @utility stripe-restricted {
 	background: repeating-linear-gradient(
 		-45deg,

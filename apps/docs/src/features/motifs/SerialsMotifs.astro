@@ -1,0 +1,117 @@
+---
+import SectionLayout from "../../layouts/SectionLayout.astro";
+
+const description =
+	"Every unit, document, sector, and component has a serial number or classification string. No element exists without an identifier.";
+const formats = [
+	{
+		pattern: "MTR-{NNN}-{NNN}",
+		example: "MTR-100-001",
+		usage: "Macro-telemetry refinement units"
+	},
+	{
+		pattern: "OPC-{NNNN}-{X}",
+		example: "OPC-4471-X",
+		usage: "Optics & calibration systems"
+	},
+	{ pattern: "R-{NNN}", example: "R-100", usage: "Refinement line assemblies" },
+	{ pattern: "B-{NNNN}", example: "B-8801", usage: "Conveyor & logistics bins" },
+	{
+		pattern: "SIG-{NNN}-{CODENAME}",
+		example: "SIG-247-NR9",
+		usage: "Signal integrity nodes"
+	},
+	{
+		pattern: "DOC# DLP-{YYYY}-{NNN}",
+		example: "DLP-2026-001",
+		usage: "Documents and design references"
+	},
+	{
+		pattern: "ZONE-{NN} // LEVEL {N}",
+		example: "ZONE-04 // LEVEL 3",
+		usage: "Access zones and clearance"
+	}
+];
+const clearanceLevels = ["// General Access", "// Departmental", "// Restricted", "// Board Directive"];
+const sectors = ["Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 7", "Sector 9"];
+---
+
+<SectionLayout title='Serial Conventions' description='Identifiers'>
+	<p class='text-md tracking-wider leading-relaxed text-dim normal-case font-normal max-w-[64ch]'>
+		{description}
+	</p>
+
+	<div class='border border-line overflow-x-auto'>
+		<table class='w-full font-mono border-collapse'>
+			<thead>
+				<tr class='border-b border-orange'>
+					<th class='text-left px-4 py-3 text-sm tracking-widest text-orange'>PATTERN</th>
+					<th class='text-left px-4 py-3 text-sm tracking-widest text-orange'>EXAMPLE</th>
+					<th class='text-left px-4 py-3 text-sm tracking-widest text-orange'>USAGE</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					formats.map((f) => (
+						<tr class='border-b border-line hover:bg-orange/3 transition-colors'>
+							<td class='px-4 py-3 text-[0.6rem] tracking-wider normal-case text-off-white'>{f.pattern}</td>
+							<td class='px-4 py-3 text-[0.6rem] tracking-wider normal-case text-orange'>{f.example}</td>
+							<td class='px-4 py-3 text-[0.6rem] tracking-wider normal-case text-dim'>{f.usage}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+
+	<div class='grid grid-cols-1 md:grid-cols-2'>
+		<div>
+			<p class='text-mono text-sm text-orange mb-4'>NOMINAL OUTPUT</p>
+			<div class='border border-line max-w-lg'>
+				<div class='px-5 py-3 border-b border-line bg-surface flex justify-between items-center'>
+					<span class='font-display font-black text-sm tracking-wider'>UNIT REGISTRY CARD</span>
+					<span class='serial text-dim'>CMP-S</span>
+				</div>
+				<div class='p-5 space-y-3'>
+					<div class='font-mono text-xl tracking-wider text-orange normal-case'>MTR-NO. 400263 250</div>
+					<div class='font-display font-black text-lg tracking-wider leading-tight'>
+						REFINEMENT PROCESSOR - SEVERED SECTOR
+					</div>
+					<div class='serial text-dim'>MACRO-TELEMETRY REFINEMENT // ZONE-02 // LEVEL -2A</div>
+					<div class='pt-3 border-t border-line flex items-center gap-6 flex-wrap'>
+						<span class='serial flex items-center gap-2'>
+							STATUS: <span
+								class='inline-block w-2 h-2 rounded-full bg-active-green shadow-[0_0_5px_var(--color-active-green)]'
+							></span>
+							<span class='text-active-greene'>ACTIVE</span>
+						</span>
+						<span class='serial'>CLEARANCE: <span class='text-orange'>LEVEL 3</span></span>
+					</div>
+					<div class='serial text-dim'>LAST PING: 01:01:13</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<p class='text-mono text-sm text-orange mb-4'>CLEARANCE LEVELS</p>
+			<div class='grid grid-cols-2 bg-line border border-line'>
+				{
+					clearanceLevels.map((level, i) => {
+						const colors = [
+							"text-dim border-l-line",
+							"text-off-white border-l-dim",
+							"text-orange border-l-orange",
+							"text-red-hi border-l-red-hi"
+						];
+						return (
+							<div class={`bg-black p-5 border border-line flex flex-col gap-2 border-l-[3px] ${colors[i]}`}>
+								<span class='font-display font-black text-[clamp(1.5rem,4vw,2.5rem)] leading-none'>LEVEL {i + 1}</span>
+								<span class='serial normal-case text-dim'>{level}</span>
+							</div>
+						);
+					})
+				}
+			</div>
+		</div>
+	</div>
+</SectionLayout>

@@ -1,0 +1,47 @@
+---
+import { StatusDot } from "@/ui/status-dot";
+import SectionLayout from "../../layouts/SectionLayout.astro";
+
+const vocabulary: Record<string, string[]> = {
+	active: ["Nominal", "Processing", "Calibrated", "Online", "Operational"],
+	standby: ["Standby", "Idle", "Holding", "Allocated", "Queued"],
+	degraded: ["Degraded", "At Capacity", "Reduced Output", "Anomalous", "Partial"],
+	offline: ["Offline", "Disconnected", "Retired", "Archived", "Terminated"]
+};
+
+const dotVariant: Record<string, "active" | "warning" | "danger" | "offline"> = {
+	active: "active",
+	standby: "offline",
+	degraded: "warning",
+	offline: "offline"
+};
+
+const titleColor: Record<string, string> = {
+	active: "text-active-green",
+	standby: "text-off-white",
+	degraded: "text-orange",
+	offline: "text-dim"
+};
+---
+
+<SectionLayout title='Status Vocabulary' description='Word System'>
+	<div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6'>
+		{
+			Object.entries(vocabulary).map(([state, words]) => (
+				<div class='flex flex-col border border-line'>
+					<div class='px-4 py-3 bg-surface border-b border-line flex items-center gap-2'>
+						<StatusDot client:load variant={dotVariant[state]} size='sm' aria-label={state} />
+						<span class={`font-display font-black text-sm tracking-wider ${titleColor[state]}`}>
+							{state.toUpperCase()}
+						</span>
+					</div>
+					{words.map((word) => (
+						<div class='px-4 py-2 border-b border-line last:border-b-0 font-mono text-xs tracking-widest normal-case text-dim hover:text-off-white hover:bg-orange/3 transition-colors'>
+							{word}
+						</div>
+					))}
+				</div>
+			))
+		}
+	</div>
+</SectionLayout>

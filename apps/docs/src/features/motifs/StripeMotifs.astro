@@ -1,0 +1,28 @@
+---
+import SectionLayout from "../../layouts/SectionLayout.astro";
+const stripes = [
+	{ variant: "sm", height: "h-1.5", desc: "Standard hazard, compact" },
+	{ variant: "md", height: "h-2.5", desc: "Page header or footer" },
+	{ variant: "lg", height: "h-4", desc: "Heavy emphasis dividers" }
+];
+---
+
+<SectionLayout title='Warning Stripe' description='Signature Motif'>
+	<div class='flex flex-col gap-6'>
+		{
+			stripes.map((stripe) => (
+				<div class='border border-line overflow-hidden'>
+					<div class='px-4 py-3 border-b border-line bg-surface flex justify-between items-center'>
+						<span class='serial text-orange'>STRIPE // {stripe.variant.toUpperCase()}</span>
+						<span class='serial normal-case'>
+							{stripe.height} // {stripe.desc}
+						</span>
+					</div>
+					<div class='p-6'>
+						<div class={`stripe w-full ${stripe.height}`} />
+					</div>
+				</div>
+			))
+		}
+	</div>
+</SectionLayout>
