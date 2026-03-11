@@ -8,9 +8,11 @@ import GlitchMotif from "../features/motifs/GlitchMotif.astro";
 import SerialsMotifs from "../features/motifs/SerialsMotifs.astro";
 import PosterMotifs from "../features/motifs/PosterMotifs.astro";
 import VocabularyMotifs from "../features/motifs/VocabularyMotifs.astro";
+
+import { ABBR } from "../data/constants";
 ---
 
-<Layout title='Motifs' serial='DOC# DKP-2026-004' classification='OPEN'>
+<Layout title='Motifs' serial={`DOC# ${ABBR}-2026-004`} classification='OPEN'>
 	<PageHeader serial='04 // MOTIF SYSTEM' title='MOTIFS' tagline='PATTERNS & VOCABULARY' />
 
 	<StripeMotifs />

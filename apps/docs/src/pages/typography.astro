@@ -9,10 +9,12 @@ import FontWeight from "../features/typography/FontWeight.astro";
 
 import tokens from "../data/tokens.json";
 
+import { ABBR } from "../data/constants";
+
 const { fonts, scale } = tokens.typography;
 ---
 
-<Layout title='Typography' serial='DOC# DKP-2026-002' classification='OPEN'>
+<Layout title='Typography' serial={`DOC# ${ABBR}-2026-002`} classification='OPEN'>
 	<PageHeader serial='02 // TYPOGRAPHY' title='TYPOGRAPHY' tagline='TYPE SCALE & FONT RULES' />
 
 	<SectionLayout title='Font Families' description='Typefaces'>

@@ -4,9 +4,11 @@ import PageHeader from "../components/PageHeader.astro";
 import ColorPalettes from "../features/colors/ColorPalettes.astro";
 import ColorCombinations from "../features/colors/ColorCombinations.astro";
 import ColorReferenceTable from "../features/colors/ColorReferenceTable.astro";
+
+import { ABBR } from "../data/constants";
 ---
 
-<Layout title='Colors' serial='DOC# DKP-2026-001' classification='OPEN'>
+<Layout title='Colors' serial={`DOC# ${ABBR}-2026-001`} classification='OPEN'>
 	<PageHeader serial='01 // COLOR SYSTEM' title='COLORS' tagline='PALETTE & PAIRING RULES' />
 
 	<!-- TODO: make each section a clickable hash link by id -->
