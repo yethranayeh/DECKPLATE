@@ -1,6 +1,9 @@
 ---
 import "../app.css";
+import { StatusDot } from "@/ui/status-dot";
 import Nav from "../components/Nav.astro";
+
+import { ABBR } from "../data/constants";
 
 interface Props {
 	title: string;
@@ -8,7 +11,7 @@ interface Props {
 	classification?: string;
 }
 
-const { title, serial = "DOC# DKP-2026-UNIT", classification = "ACTIVE" } = Astro.props;
+const { title, serial = `DOC# ${ABBR}-2026-UNIT`, classification = "ACTIVE" } = Astro.props;
 ---
 
 <!doctype html>
@@ -36,9 +39,11 @@ const { title, serial = "DOC# DKP-2026-UNIT", classification = "ACTIVE" } = Astr
 		<div class='stripe stripe-md' aria-hidden='true'></div>
 
 		<footer class='px-12 py-6 flex justify-between items-center flex-wrap gap-2'>
-			<span class='serial'>DECKPLATE // MIL-SPEC STRICT ADHERENCE</span>
+			<span class='serial'>DECKPLATE // INDUSTRIAL-GRADE COMPLIANCE</span>
 			<span class='serial'
-				>UNIT: DOC-SERVER-01 // DEPT: OPTICS AND DESIGN // STATUS: [NOMINAL] // SYS.OP LOG ACTIVE</span
+				>UNIT: DOC-SERVER-01 // DEPT: OPTICS AND DESIGN // STATUS: <span
+					><StatusDot aria-label='Server Status' variant='active' size='sm' className='inline-block mb-px' /> NOMINAL</span
+				></span
 			>
 		</footer>
 	</body>

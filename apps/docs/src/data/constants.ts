@@ -1,0 +1,1 @@
+export const ABBR = "DKPL";

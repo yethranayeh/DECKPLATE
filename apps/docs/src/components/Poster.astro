@@ -1,0 +1,117 @@
+---
+import { Badge } from "@/ui/badge";
+
+export interface Props {
+	variant: "grid" | "orange" | "stripe" | "grid-red";
+	caption: string;
+	subtitle: string;
+	serial: string;
+	badgeText?: string;
+	badgeVariant?: "fill-orange" | "fill-red" | "outline-yellow" | "text";
+	badgeDot?: boolean;
+	class?: string;
+}
+
+const {
+	variant,
+	caption,
+	subtitle,
+	serial,
+	badgeText,
+	badgeVariant = "text",
+	badgeDot = false,
+	class: className
+} = Astro.props;
+
+const isGrid = variant === "grid" || variant === "grid-red";
+
+const frameClasses: Record<string, string> = {
+	grid: "bg-black border-line",
+	orange: "bg-orange border-line",
+	stripe: "bg-black border-line",
+	"grid-red": "bg-black border-red"
+};
+
+const captionClasses: Record<string, string> = {
+	grid: "text-orange",
+	orange: "text-[rgba(0,0,0,0.5)]",
+	stripe: "text-yellow",
+	"grid-red": "text-red-hi"
+};
+
+const titleClasses: Record<string, string> = {
+	grid: "text-off-white",
+	orange: "text-black",
+	stripe: "text-yellow",
+	"grid-red": "text-red-hi"
+};
+
+const subClasses: Record<string, string> = {
+	grid: "text-off-white opacity-55",
+	orange: "text-[rgba(0,0,0,0.45)]",
+	stripe: "text-dim",
+	"grid-red": "text-off-white opacity-55"
+};
+
+const footerClasses: Record<string, string> = {
+	grid: "border-line text-dim",
+	orange: "[border-top-color:rgba(0,0,0,0.15)] text-[rgba(0,0,0,0.4)]",
+	stripe: "border-line text-dim",
+	"grid-red": "[border-top-color:#330000] text-dim"
+};
+---
+
+<div
+	class:list={[
+		"poster relative overflow-hidden border flex flex-col p-6 aspect-3/4",
+		frameClasses[variant],
+		isGrid && "grid-overlay",
+		className
+	]}>
+	{variant === "stripe" && <div class='absolute inset-0 pointer-events-none stripe-restricted' />}
+	{
+		isGrid && (
+			<div class='absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_38%,rgba(255,94,0,0.13)_0%,transparent_70%)]' />
+		)
+	}
+
+	<div class:list={["relative z-1 font-mono text-[0.65rem] tracking-widest", captionClasses[variant]]}>
+		{caption}
+	</div>
+
+	<div class='relative z-1 flex items-center justify-center flex-1'>
+		<slot />
+	</div>
+
+	<div class='space-y-2'>
+		<div class='space-y-1'>
+			<div
+				class:list={[
+					"relative z-1 font-display font-black text-[clamp(2rem,5vw,3.2rem)] uppercase",
+					titleClasses[variant]
+				]}>
+				<slot name='title' />
+			</div>
+
+			<div class:list={["relative z-1 font-display text-[0.65rem] tracking-widest uppercase", subClasses[variant]]}>
+				{subtitle}
+			</div>
+		</div>
+
+		<div
+			class:list={[
+				"relative z-1 pt-1.5 border-t flex justify-between items-center font-mono text-[0.65rem] tracking-widest",
+				footerClasses[variant]
+			]}>
+			<span>{serial}</span>
+			{badgeText && badgeVariant === "text" && <span>{badgeText}</span>}
+			{
+				badgeText && badgeVariant !== "text" && (
+					<Badge variant={badgeVariant} dot={badgeDot}>
+						{badgeText}
+					</Badge>
+				)
+			}
+		</div>
+	</div>
+</div>

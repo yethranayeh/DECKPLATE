@@ -1,0 +1,155 @@
+---
+import SectionLayout from "../../layouts/SectionLayout.astro";
+import Poster from "../../components/Poster.astro";
+
+const rules = [
+	"Poster titles: 1-3 words, maximum impact. REFINE // ALLOCATE // PROCESS // AUTOMATE.",
+	"Strongly recommended to include a serial number in the footer.",
+	"Strongly recommended to include a department name or zone reference in the caption of the title",
+	"An optional badge anchors the composition's intent in the footer",
+	"Graphic element in the center: technical diagram, illustration, gear schematic, etc."
+];
+---
+
+<SectionLayout title='Poster Language' description='Composition Rules'>
+	<div class='space-y-2'>
+		<p class='serial text-orange'>COMPOSITION REFERENCE</p>
+		<div class='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2'>
+			<Poster
+				badgeDot
+				variant='grid'
+				caption='Aerial Systems // BD-90490007'
+				subtitle='Autonomous Screening Protocol'
+				serial='SN: b11205d698e'
+				badgeText='Field Tested'
+				badgeVariant='fill-orange'>
+				<svg
+					width='130'
+					height='130'
+					viewBox='0 0 130 130'
+					xmlns='http://www.w3.org/2000/svg'
+					class='opacity-75 fill-none'>
+					<line class='stroke-orange stroke-2' x1='65' y1='65' x2='14' y2='14'></line>
+					<line class='stroke-orange stroke-2' x1='65' y1='65' x2='116' y2='14'></line>
+					<line class='stroke-orange stroke-2' x1='65' y1='65' x2='14' y2='116'></line>
+					<line class='stroke-orange stroke-2' x1='65' y1='65' x2='116' y2='116'></line>
+					<ellipse cx='14' cy='14' rx='12' ry='5' class='stroke-orange stroke-1.5' transform='rotate(-45 14 14)'
+					></ellipse>
+					<ellipse cx='116' cy='14' rx='12' ry='5' class='stroke-orange stroke-1.5' transform='rotate(45 116 14)'
+					></ellipse>
+					<ellipse cx='14' cy='116' rx='12' ry='5' class='stroke-orange stroke-1.5' transform='rotate(45 14 116)'
+					></ellipse>
+					<ellipse cx='116' cy='116' rx='12' ry='5' class='stroke-orange stroke-1.5' transform='rotate(-45 116 116)'
+					></ellipse>
+					<rect class='fill-orange/40' x='53' y='53' width='24' height='24' rx='2'></rect>
+					<circle cx='65' cy='65' r='10' class='stroke-off-white stroke-1'></circle>
+					<line x1='59' y1='65' x2='71' y2='65' class='stroke-off-white stroke-1'></line>
+					<line x1='65' y1='59' x2='65' y2='71' class='stroke-off-white stroke-1'></line>
+					<polyline points='4,12 4,4 12,4' class='stroke-orange stroke-1.5'></polyline>
+					<polyline points='118,4 126,4 126,12' class='stroke-orange stroke-1.5'></polyline>
+					<polyline points='4,118 4,126 12,126' class='stroke-orange stroke-1.5'></polyline>
+					<polyline points='126,118 126,126 118,126' class='stroke-orange stroke-1.5'></polyline>
+				</svg>
+				<Fragment slot='title'>Aerial<br />Systems</Fragment>
+			</Poster>
+
+			<Poster
+				variant='orange'
+				caption='Dept. of Robotics // 2026'
+				subtitle='WHSE 7 @ Assembly'
+				serial='// Spot R-100'
+				badgeText='ISO 12100'>
+				<svg width='110' height='110' viewBox='0 0 110 110' fill='none' xmlns='http://www.w3.org/2000/svg'>
+					<circle cx='55' cy='55' r='28' stroke='rgba(0,0,0,0.35)' stroke-width='8' fill='none'></circle>
+					<circle cx='55' cy='55' r='10' fill='rgba(0,0,0,0.3)'></circle>
+					<rect x='51' y='6' width='8' height='16' rx='2' fill='rgba(0,0,0,0.3)'></rect>
+					<rect x='51' y='88' width='8' height='16' rx='2' fill='rgba(0,0,0,0.3)'></rect>
+					<rect x='6' y='51' width='16' height='8' rx='2' fill='rgba(0,0,0,0.3)'></rect>
+					<rect x='88' y='51' width='16' height='8' rx='2' fill='rgba(0,0,0,0.3)'></rect>
+					<rect x='19' y='12' width='8' height='16' rx='2' fill='rgba(0,0,0,0.3)' transform='rotate(-45 23 20)'></rect>
+					<rect x='83' y='12' width='8' height='16' rx='2' fill='rgba(0,0,0,0.3)' transform='rotate(45 87 20)'></rect>
+					<rect x='19' y='82' width='8' height='16' rx='2' fill='rgba(0,0,0,0.3)' transform='rotate(45 23 90)'></rect>
+					<rect x='83' y='82' width='8' height='16' rx='2' fill='rgba(0,0,0,0.3)' transform='rotate(-45 87 90)'></rect>
+				</svg>
+				<Fragment slot='title'>Auto-<br />mation<br />Zone</Fragment>
+			</Poster>
+
+			<Poster
+				variant='stripe'
+				caption='Restricted Zone // Branch 501'
+				subtitle='Non-Compliance Will Be Documented'
+				serial='Kier // PE'
+				badgeText='Restricted'
+				badgeVariant='outline-yellow'>
+				<svg width='120' height='115' viewBox='0 0 120 115' fill='none' xmlns='http://www.w3.org/2000/svg'>
+					<polygon points='60,6 114,103 6,103' class='stroke-yellow stroke-3' fill='rgba(255,214,0,0.05)'></polygon>
+					<text
+						x='60'
+						y='90'
+						class='font-display text-[62px] font-black fill-yellow'
+						text-anchor='middle'
+						dominant-baseline='auto'>
+						!
+					</text>
+				</svg>
+				<Fragment slot='title'>Authorized<br />Only</Fragment>
+			</Poster>
+
+			<Poster
+				variant='grid-red'
+				caption='Swarm Coordination // Active'
+				subtitle='Swarm Protocol Sigma-9'
+				serial='REF: SWM-247-SIG9'
+				badgeText='Alert'
+				badgeVariant='fill-red'>
+				<div class='flex flex-col items-center gap-2'>
+					<div class='font-display font-black text-[clamp(3rem,8vw,5.5rem)] leading-none text-red-hi uppercase glitch'>
+						SWARM
+					</div>
+					<div class='space-y-1'>
+						<div class='font-mono text-xs tracking-widest text-dim normal-case'>
+							UNITS ACTIVE: <span class='text-red-hi'>247</span>
+						</div>
+						<div class='grid grid-cols-12 gap-0.5'>
+							{
+								Array.from({ length: 48 }).map((_, i) => {
+									const seed = ((i * 19 + 5) * 2) % 100;
+									const active = seed > 30;
+									const isRed = active && seed > 75;
+									return (
+										<div
+											class:list={[
+												"shrink-0 size-2 rounded-[1px]",
+												{
+													"shadow-[0_0_4px_transparent]": active,
+													"bg-red-hi shadow-red-hi": active && isRed,
+													"bg-orange shadow-orange": active && !isRed,
+													"bg-line": !active
+												}
+											]}
+										/>
+									);
+								})
+							}
+						</div>
+					</div>
+				</div>
+				<Fragment slot='title'>Process</Fragment>
+			</Poster>
+		</div>
+	</div>
+
+	<div class='space-y-2'>
+		<p class='serial text-orange'>COMPOSITION RULES</p>
+		<div class='border border-line flex flex-col'>
+			{
+				rules.map((rule, i) => (
+					<div class='flex gap-4 px-5 py-3 border-b border-line last:border-b-0 items-start'>
+						<span class='text-mono text-sm text-orange'>R-{String(i + 1).padStart(2, "0")}</span>
+						<span class='text-xs tracking-wider leading-relaxed text-dim normal-case font-normal'>{rule}</span>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</SectionLayout>
