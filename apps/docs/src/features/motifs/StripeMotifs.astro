@@ -1,5 +1,6 @@
 ---
 import SectionLayout from "../../layouts/SectionLayout.astro";
+import SourceCode from "../../components/SourceCode.astro";
 const stripes = [
 	{ variant: "sm", height: "h-1.5", desc: "Standard hazard, compact" },
 	{ variant: "md", height: "h-2.5", desc: "Page header or footer" },
@@ -24,5 +25,45 @@ const stripes = [
 				</div>
 			))
 		}
+
+		<div>
+			<div class='border border-line overflow-hidden'>
+				<div class='px-4 py-3 border-b border-line bg-surface flex justify-between items-center'>
+					<span class='serial text-yellow'>STRIPE // RESTRICTED</span>
+					<span class='serial normal-case'>Yellow & black overlay // restricted zones</span>
+				</div>
+				<div class='p-6'>
+					<div class='relative h-50 bg-black border border-line flex items-end p-6'>
+						<div class='absolute inset-0 stripe-restricted'></div>
+						<span class='relative z-10 font-display font-black text-yellow text-xl tracking-wider'>
+							RESTRICTED ZONE // LEVEL 3
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<SourceCode
+				lang='css'
+				code={`@utility stripe {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color-orange) 0px,
+    var(--color-orange) 8px,
+    var(--color-black) 8px,
+    var(--color-black) 16px
+  );
+}
+
+@utility stripe-restricted {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 214, 0, 0.055) 0px,
+    rgba(255, 214, 0, 0.055) 8px,
+    transparent 8px,
+    transparent 20px
+  );
+}`}
+			/>
+		</div>
 	</div>
 </SectionLayout>

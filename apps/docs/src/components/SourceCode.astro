@@ -1,0 +1,14 @@
+---
+import type { CodeLanguage } from "astro";
+import { Code } from "astro:components";
+import shikiDeckplateTheme from "../shiki-deckplate-overrides.json";
+
+interface Props {
+	code: string;
+	lang: CodeLanguage;
+}
+
+const { code, lang } = Astro.props;
+---
+
+<Code code={code} lang={lang} theme={shikiDeckplateTheme as any} />

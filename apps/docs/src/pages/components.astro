@@ -18,6 +18,11 @@ import { ABBR } from "../data/constants";
 	<ComponentLayout
 		name='Button'
 		serial='CMP-001'
+		usage={`import { Button } from "@/ui/button"
+
+<Button variant="primary">Deploy</Button>
+<Button variant="danger" size="lg">Terminate</Button>
+<Button variant="outline" disabled>Locked</Button>`}
 		propDefinitions={[
 			{
 				name: "variant",
@@ -50,6 +55,11 @@ import { ABBR } from "../data/constants";
 	<ComponentLayout
 		name='Badge'
 		serial='CMP-002'
+		usage={`import { Badge } from "@/ui/badge"
+
+<Badge>Default</Badge>
+<Badge variant="fill-orange" dot>Active</Badge>
+<Badge variant="outline-red">Critical</Badge>`}
 		propDefinitions={[
 			{
 				name: "variant",
@@ -75,6 +85,11 @@ import { ABBR } from "../data/constants";
 	<ComponentLayout
 		name='Status Dot'
 		serial='CMP-003'
+		usage={`import { StatusDot } from "@/ui/status-dot"
+
+<StatusDot aria-label="System status" variant="active" />
+<StatusDot aria-label="Warning" variant="warning" pulse />
+<StatusDot aria-label="Offline" variant="offline" size="lg" />`}
 		propDefinitions={[
 			{
 				name: "aria-label",
@@ -117,6 +132,11 @@ import { ABBR } from "../data/constants";
 	<ComponentLayout
 		name='Progress Bar'
 		serial='CMP-004'
+		usage={`import { ProgressBar } from "@/ui/progress-bar"
+
+<ProgressBar value={72} label="Upload" />
+<ProgressBar value={15} threshold={30} />
+<ProgressBar value={100} hideValue />`}
 		propDefinitions={[
 			{
 				name: "value",

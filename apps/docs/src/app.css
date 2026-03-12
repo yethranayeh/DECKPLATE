@@ -38,4 +38,37 @@
 		letter-spacing: normal;
 		line-height: 1.6;
 	}
+
+	pre {
+		background: var(--color-surface) !important;
+		border: 1px solid var(--color-line);
+		padding: 1rem 1.25rem;
+		overflow-x: auto;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		line-height: 1.7;
+		letter-spacing: 0.02em;
+		text-transform: none;
+		font-weight: 400;
+	}
+
+	pre code {
+		background: none;
+		padding: 0;
+		border: none;
+		font-size: inherit;
+		font-family: inherit;
+	}
+
+	:not(pre) > code {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		background: var(--color-surface);
+		border: 1px solid var(--color-line);
+		padding: 0.15em 0.4em;
+		text-transform: none;
+		font-weight: 400;
+		letter-spacing: 0.02em;
+		color: var(--color-orange);
+	}
 }

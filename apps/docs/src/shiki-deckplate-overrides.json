@@ -1,0 +1,139 @@
+{
+	"name": "deckplate",
+	"type": "dark",
+	"colors": {
+		"editor.background": "#111111",
+		"editor.foreground": "#EDE8DC"
+	},
+	"tokenColors": [
+		{
+			"scope": ["comment", "punctuation.definition.comment"],
+			"settings": {
+				"foreground": "#666660",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"scope": [
+				"keyword",
+				"keyword.control",
+				"keyword.operator.new",
+				"storage",
+				"storage.type",
+				"storage.modifier"
+			],
+			"settings": {
+				"foreground": "#FF5E00"
+			}
+		},
+		{
+			"scope": [
+				"string",
+				"string.quoted",
+				"string.template"
+			],
+			"settings": {
+				"foreground": "#FFD600"
+			}
+		},
+		{
+			"scope": [
+				"constant.numeric",
+				"constant.language"
+			],
+			"settings": {
+				"foreground": "#FFD600"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.type",
+				"entity.name.class",
+				"support.type",
+				"entity.other.inherited-class"
+			],
+			"settings": {
+				"foreground": "#FF2200"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.function",
+				"support.function",
+				"meta.function-call"
+			],
+			"settings": {
+				"foreground": "#EDE8DC"
+			}
+		},
+		{
+			"scope": [
+				"variable",
+				"variable.other",
+				"variable.parameter"
+			],
+			"settings": {
+				"foreground": "#EDE8DC"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.tag",
+				"support.class.component"
+			],
+			"settings": {
+				"foreground": "#FF5E00"
+			}
+		},
+		{
+			"scope": [
+				"entity.other.attribute-name"
+			],
+			"settings": {
+				"foreground": "#C91200"
+			}
+		},
+		{
+			"scope": [
+				"punctuation",
+				"meta.brace",
+				"punctuation.definition.tag",
+				"punctuation.separator",
+				"punctuation.terminator"
+			],
+			"settings": {
+				"foreground": "#666660"
+			}
+		},
+		{
+			"scope": [
+				"keyword.operator",
+				"keyword.operator.assignment",
+				"keyword.operator.comparison",
+				"keyword.operator.logical"
+			],
+			"settings": {
+				"foreground": "#666660"
+			}
+		},
+		{
+			"scope": [
+				"meta.tag.attributes",
+				"string.quoted.double.html",
+				"punctuation.definition.string"
+			],
+			"settings": {
+				"foreground": "#FFD600"
+			}
+		},
+		{
+			"scope": [
+				"support.type.property-name.css",
+				"entity.name.tag.css"
+			],
+			"settings": {
+				"foreground": "#FF5E00"
+			}
+		}
+	]
+}

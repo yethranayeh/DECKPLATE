@@ -64,7 +64,7 @@ const sectors = ["Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 7", "Se
 		</table>
 	</div>
 
-	<div class='grid grid-cols-1 md:grid-cols-2'>
+	<div class='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6'>
 		<div>
 			<p class='text-mono text-sm text-orange mb-4'>NOMINAL OUTPUT</p>
 			<div class='border border-line max-w-lg'>
@@ -92,9 +92,9 @@ const sectors = ["Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 7", "Se
 			</div>
 		</div>
 
-		<div>
-			<p class='text-mono text-sm text-orange mb-4'>CLEARANCE LEVELS</p>
-			<div class='grid grid-cols-2 bg-line border border-line'>
+		<div class='space-y-1 md:space-y-2'>
+			<p class='text-mono text-sm text-orange'>CLEARANCE LEVELS</p>
+			<div class='grid grid-cols-2 gap-0 md:gap-1 lg:gap-4'>
 				{
 					clearanceLevels.map((level, i) => {
 						const colors = [
