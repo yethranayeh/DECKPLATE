@@ -55,7 +55,7 @@ export async function add(component: string, options: Record<string, unknown>): 
 	let items: RegistryItem[];
 	try {
 		items = await resolveRegistryTree(config.registryUrl, [component]);
-	} catch (err) {
+	} catch {
 		log.error(`NOT FOUND: "${component}"`);
 		log.dim(`  REGISTRY // SRC: ${config.registryUrl}`);
 		process.exit(1);

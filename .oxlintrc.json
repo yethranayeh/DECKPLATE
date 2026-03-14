@@ -13,5 +13,13 @@
 		"import/no-unassigned-import": "off",
 		"typescript/triple-slash-reference": "off"
 	},
-	"ignorePatterns": ["dist/", "node_modules/", "*.config.*"]
+	"ignorePatterns": ["dist/", "node_modules/", "*.config.*"],
+	"overrides": [
+		{
+			"files": ["packages/cli/**", "scripts/**"],
+			"rules": {
+				"no-console": "off"
+			}
+		}
+	]
 }
