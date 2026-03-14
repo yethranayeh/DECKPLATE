@@ -1,6 +1,8 @@
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 
+import type { RegistryFileType } from "@deckplate/registry/schema";
+
 import { loadConfig } from "../config.js";
 import { resolveRegistryTree, type RegistryItem } from "../registry/api.js";
 import { transformImports } from "../transforms/transform-imports.js";
@@ -24,7 +26,7 @@ function findProjectRoot(cwd: string): string {
  */
 function resolveOutputPath(
 	filePath: string,
-	fileType: string,
+	fileType: RegistryFileType,
 	config: ReturnType<typeof loadConfig>,
 ): string {
 	if (fileType === "registry:lib") {

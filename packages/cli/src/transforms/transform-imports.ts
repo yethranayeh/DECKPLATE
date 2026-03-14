@@ -1,3 +1,5 @@
+import type { RegistryFileType } from "@deckplate/registry/schema";
+
 import type { DeckplateConfig } from "../config.js";
 
 /**
@@ -7,7 +9,7 @@ import type { DeckplateConfig } from "../config.js";
  */
 export function transformImports(
 	source: string,
-	_fileType: string,
+	_fileType: RegistryFileType, // TODO: perhaps "just in case" is not enough reason to pass this
 	config: DeckplateConfig,
 ): string {
 	let result = source;
