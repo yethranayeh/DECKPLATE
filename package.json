@@ -11,11 +11,14 @@
 		"format:check": "oxfmt --check .",
 		"build:docs": "pnpm -F=docs run build",
 		"dev:docs": "pnpm -F=docs run dev",
-		"typecheck": "pnpm -r typecheck"
+		"typecheck": "pnpm -r typecheck",
+		"registry:build": "tsx scripts/build-registry.mts"
 	},
 	"devDependencies": {
 		"oxfmt": "^0.36.0",
 		"oxlint": "^1.51.0",
-		"typescript": "^5.5.0"
+		"tsx": "^4.16.0",
+		"typescript": "^5.5.0",
+		"zod": "^3.23.0"
 	}
 }
