@@ -1,0 +1,40 @@
+{
+	"name": "@deckplate/cli",
+	"version": "0.1.0",
+	"private": false,
+	"description": "DECKPLATE CLI — add DECKPLATE components to your project",
+	"keywords": [
+		"cli",
+		"components",
+		"deckplate"
+	],
+	"license": "MIT",
+	"bin": {
+		"deckplate": "./dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"exports": {
+		".": "./dist/index.js"
+	},
+	"scripts": {
+		"build": "tsup",
+		"postbuild": "chmod +x dist/index.js",
+		"dev": "tsup --watch",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"commander": "^12.1.0",
+		"zod": "^3.23.0"
+	},
+	"devDependencies": {
+		"@types/node": "^25.5.0",
+		"tsup": "^8.1.0",
+		"typescript": "^5.5.0"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
+}
