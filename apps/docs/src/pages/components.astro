@@ -8,6 +8,7 @@ import { ButtonDemo } from "../features/components/ButtonDemo";
 import { BadgeDemo } from "../features/components/BadgeDemo";
 import { StatusDotDemo } from "../features/components/StatusDotDemo";
 import { ProgressBarDemo } from "../features/components/ProgressBarDemo";
+import { TypographyDemo } from "../features/components/TypographyDemo";
 
 import { ABBR } from "../data/constants";
 ---
@@ -168,5 +169,38 @@ import { ABBR } from "../data/constants";
 			}
 		]}>
 		<ProgressBarDemo client:load />
+	</ComponentLayout>
+
+	<ComponentLayout
+		id='typography'
+		name='Typography'
+		serial='CMP-005'
+		usage={`import { Typography } from "@/ui/typography"
+
+<Typography variant="display">Signal Nominal</Typography>
+<Typography variant="headline-xl">Macro-Telemetry Refinement</Typography>
+<Typography variant="headline-lg">Structural Integrity</Typography>
+<Typography variant="label-md">Operator Clearance Required</Typography>
+<Typography variant="label-sm">Unit SPOT-100 // Archival Processing // Rev 4.2</Typography>
+<Typography variant="serial">MTR-400263-250 // b11205d698e</Typography>`}
+		propDefinitions={[
+			{
+				name: "variant",
+				type: "'display' | 'headline-xl' | 'headline-lg' | 'label-md' | 'label-sm' | 'serial'",
+				default: "'label-md'",
+				description: "Typography preset"
+			},
+			{
+				name: "as",
+				type: "React.ElementType",
+				description: "Override the rendered HTML element (defaults: h1, h2, h3, p, p, span)"
+			},
+			{
+				name: "className",
+				type: "string",
+				description: "Additional arbitrary classes"
+			}
+		]}>
+		<TypographyDemo client:load />
 	</ComponentLayout>
 </Layout>

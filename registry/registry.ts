@@ -44,4 +44,14 @@ export const registry: RegistryItem[] = [
 		cssImports: ["@deckplate/theme"],
 		files: [{ path: "ui/progress-bar.tsx", type: "registry:ui" }],
 	},
+	{
+		name: "typography",
+		type: "registry:ui",
+		description:
+			"Component with 6 predefined typography variants: display, headline-xl, headline-lg, label-md, label-sm, serial.",
+		dependencies: ["class-variance-authority"],
+		registryDependencies: ["utils"],
+		cssImports: ["@deckplate/theme"],
+		files: [{ path: "ui/typography.tsx", type: "registry:ui" }],
+	},
 ];
