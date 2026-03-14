@@ -3,6 +3,9 @@
 	"version": "0.0.0",
 	"private": true,
 	"description": "DECKPLATE component registry source",
+	"exports": {
+		"./schema": "./schema.ts"
+	},
 	"scripts": {
 		"typecheck": "tsc --noEmit"
 	},
