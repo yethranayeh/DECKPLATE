@@ -11,7 +11,7 @@ const configSchema = z.object({
 		})
 		.default({}),
 	cssImport: z.string().optional(),
-	registryUrl: z.string().default("https://deckplate.dev/r"),
+	registryUrl: z.string().default("https://deckplate.netlify.app/r"),
 });
 const CONFIG_NAME = "deckplate.json";
 

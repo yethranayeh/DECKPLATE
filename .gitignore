@@ -7,3 +7,4 @@ dist/
 .env.local
 .astro/
 registry/__registry__/
+packages/cli/.npmrc

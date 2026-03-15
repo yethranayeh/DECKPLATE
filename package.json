@@ -9,6 +9,7 @@
 		"lint:fix": "oxlint --fix .",
 		"format": "oxfmt .",
 		"format:check": "oxfmt --check .",
+		"prebuild:docs": "pnpm registry:build && mkdir -p apps/docs/public/r && cp -r registry/__registry__/* apps/docs/public/r/",
 		"build:docs": "pnpm -F=docs run build",
 		"dev:docs": "pnpm -F=docs run dev",
 		"typecheck": "pnpm -r typecheck",
