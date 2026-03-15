@@ -10,6 +10,7 @@ import FontWeight from "../features/typography/FontWeight.astro";
 import tokens from "../data/tokens.json";
 
 import { ABBR } from "../data/constants";
+import { Typography as TypographyComponent } from "@/ui/typography";
 
 const { fonts, scale } = tokens.typography;
 ---
@@ -46,6 +47,19 @@ const { fonts, scale } = tokens.typography;
 	<SectionLayout title='Type Scale' description='Scale'>
 		<div class='flex flex-col border border-line'>
 			{scale.map((s) => <TypeScale scale={s} />)}
+		</div>
+
+		<div class='border border-line p-6 mt-6'>
+			<p class='prose text-sm text-off-white'>
+				These specifications are implemented in the <TypographyComponent
+					as='a'
+					href='/components#typography'
+					variant='serial'
+					className='normal-case text-sm tracking-normal hover:underline'>Typography</TypographyComponent
+				>
+				component, which can be integrated into a project by running
+				<code class='font-mono text-orange text-xs'>npx deckplate add typography</code> to make necessary allocations.
+			</p>
 		</div>
 	</SectionLayout>
 

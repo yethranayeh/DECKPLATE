@@ -50,17 +50,25 @@ const defaultTagMap: Record<string, React.ElementType> = {
 	serial: "span",
 };
 
-export interface TypographyProps
-	extends React.HTMLAttributes<HTMLElement>, VariantProps<typeof typographyVariants> {
+type TypographyOwnProps<T extends React.ElementType = React.ElementType> = {
 	/**
 	 * Override what HTML tag it will output
 	 * @default defaultTagMap
 	 */
-	as?: React.ElementType;
+	as?: T;
 	className?: string;
-}
+} & VariantProps<typeof typographyVariants>;
 
-function Typography({ variant, as, className, children, ...props }: TypographyProps) {
+export type TypographyProps<T extends React.ElementType = React.ElementType> =
+	TypographyOwnProps<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof TypographyOwnProps>;
+
+function Typography<T extends React.ElementType = "p">({
+	variant,
+	as,
+	className,
+	children,
+	...props
+}: TypographyProps<T>) {
 	const Tag = as ?? defaultTagMap[variant ?? "label-md"] ?? "p";
 
 	return (
