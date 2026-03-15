@@ -1,14 +1,27 @@
 {
 	"name": "@deckplate/cli",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"private": false,
 	"description": "DECKPLATE CLI // add DECKPLATE components to your project",
 	"keywords": [
 		"cli",
 		"components",
-		"deckplate"
+		"deckplate",
+		"design-system",
+		"radix-ui",
+		"shadcn",
+		"tailwind"
 	],
+	"homepage": "https://deckplate.netlify.app",
+	"bugs": {
+		"url": "https://github.com/yethranayeh/DECKPLATE/issues"
+	},
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yethranayeh/DECKPLATE.git",
+		"directory": "packages/cli"
+	},
 	"bin": {
 		"deckplate": "./dist/index.js"
 	},

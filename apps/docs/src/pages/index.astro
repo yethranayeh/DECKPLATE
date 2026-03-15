@@ -1,15 +1,18 @@
 ---
+import { execSync } from "node:child_process";
 import Layout from "../layouts/Layout.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
 
 import { ABBR } from "../data/constants";
-const pageName = `${ABBR}-2026-001`;
+import { VERSION } from "../data/version";
+
+const gitHash = execSync("git rev-parse --short HEAD").toString().trim();
 const wordSalads = [
-	{ key: "DOCUMENT", val: pageName },
-	{ key: "REVISION", val: "4.2" },
-	{ key: "VERSION", val: "0.0.0" },
+	{ key: "DOCUMENT", val: "registry-ui" },
+	{ key: "REVISION", val: gitHash },
+	{ key: "VERSION", val: VERSION },
 	{ key: "YEAR", val: "2026" },
-	{ key: "CLASSIFICATION", val: "OPEN" }
+	{ key: "CLASSIFICATION", val: "MIT // OSS" }
 ];
 const referenceSections = [
 	{
@@ -39,10 +42,10 @@ const referenceSections = [
 ];
 ---
 
-<Layout title='Overview' serial={`DOC# ${pageName}`} classification='OPEN'>
+<Layout title='Overview' serial={`DOC# ${ABBR}-2026-001`} classification='OPEN'>
 	<section class='grid-overlay py-8 px-6 md:py-14 md:px-10 space-y-5 md:space-y-10 border-b border-line'>
 		<p class='text-orange font-thin tracking-widest text-sm md:text-base'>
-			DOC# {ABBR}-2026-001 // CLASSIFICATION: OPEN // DESIGN SYSTEM REFERENCE
+			DOC# {ABBR}-2026-001 // DESIGN SYSTEM REFERENCE
 		</p>
 		<div>
 			<div class='space-y-1'>

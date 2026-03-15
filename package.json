@@ -13,7 +13,9 @@
 		"build:docs": "pnpm -F=docs run build",
 		"dev:docs": "pnpm -F=docs run dev",
 		"typecheck": "pnpm -r typecheck",
-		"registry:build": "tsx scripts/build-registry.mts"
+		"registry:build": "tsx scripts/build-registry.mts",
+		"release:cli": "./scripts/release.sh cli",
+		"release:theme": "./scripts/release.sh theme"
 	},
 	"devDependencies": {
 		"oxfmt": "^0.36.0",

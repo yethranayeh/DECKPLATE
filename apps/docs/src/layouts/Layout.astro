@@ -4,6 +4,8 @@ import { StatusDot } from "@/ui/status-dot";
 import Nav from "../components/Nav.astro";
 
 import { ABBR } from "../data/constants";
+import { VERSION } from "../data/version";
+import { Typography } from "@/ui/typography";
 
 interface Props {
 	title: string;
@@ -39,12 +41,15 @@ const { title, serial = `DOC# ${ABBR}-2026-UNIT`, classification = "ACTIVE" } = 
 		<div class='stripe stripe-md' aria-hidden='true'></div>
 
 		<footer class='px-12 py-6 flex justify-between items-center flex-wrap gap-2'>
-			<span class='serial'>DECKPLATE // INDUSTRIAL-GRADE COMPLIANCE</span>
+			<span class='serial'
+				>DECKPLATE <Typography variant='serial'>{VERSION}</Typography> // INDUSTRIAL-GRADE COMPLIANCE</span
+			>
 			<span class='serial'
 				>UNIT: DOC-SERVER-01 // DEPT: OPTICS AND DESIGN // STATUS: <span
-					><StatusDot aria-label='Server Status' variant='active' size='sm' className='inline-block mb-px' /> NOMINAL</span
-				></span
-			>
+					><StatusDot aria-label='Server Status' variant='active' size='sm' className='inline-block mb-px' />
+					<span class='text-active-green'>NOMINAL</span></span
+				>
+			</span>
 		</footer>
 	</body>
 </html>

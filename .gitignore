@@ -9,3 +9,4 @@ dist/
 registry/__registry__/
 packages/cli/.npmrc
 packages/theme/.npmrc
+apps/docs/public/
