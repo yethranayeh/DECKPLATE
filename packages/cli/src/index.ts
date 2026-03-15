@@ -11,6 +11,17 @@ const program = new Command()
 	.version(version);
 
 program
+	.command("init")
+	.description("Initialize DECKPLATE configurations for project")
+	.option("--components <alias>", 'Component alias path (default: "@/components/ui")')
+	.option("--lib <alias>", 'Lib alias path (default: "@/lib")')
+	.option("-f, --force", "Overwrite existing config and files")
+	.action(async (options: Record<string, unknown>) => {
+		const { init } = await import("./commands/init.js");
+		await init(options);
+	});
+
+program
 	.command("add")
 	.description("Add a DECKPLATE component to your project")
 	.argument("<component>", "Component name (e.g. button, badge, status-dot)")

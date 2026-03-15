@@ -1,41 +1,9 @@
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 
-import type { RegistryFileType } from "@deckplate/registry/schema";
-
 import { loadConfig } from "../config.js";
 import { resolveRegistryTree, type RegistryItem } from "../registry/api.js";
-import { transformImports } from "../transforms/transform-imports.js";
-import { log } from "../utils/logger.js";
-
-/** Assumes first occurence of **package.json** is project root */
-function findProjectRoot(cwd: string): string {
-	let dir = cwd;
-	while (true) {
-		if (existsSync(resolve(dir, "package.json"))) return dir;
-		const parent = dirname(dir);
-		if (parent === dir) return cwd;
-		dir = parent;
-	}
-}
-
-/**
- * Map file path to target project path.
- * @example // registry:lib files mapped to lib alias path
- * @example // registry:ui files mapped to components alias path
- */
-function resolveOutputPath(
-	filePath: string,
-	fileType: RegistryFileType,
-	config: ReturnType<typeof loadConfig>,
-): string {
-	if (fileType === "registry:lib") {
-		const relativePath = filePath.replace(/^lib\//, "");
-		return `${config.aliases.lib.replace(/^@\//, "")}/${relativePath}`;
-	}
-	const relativePath = filePath.replace(/^ui\//, "");
-	return `${config.aliases.components.replace(/^@\//, "")}/${relativePath}`;
-}
+import { log, findProjectRoot, resolveOutputPath, transformImports } from "../utils/index.js";
 
 export async function add(component: string, options: Record<string, unknown>): Promise<void> {
 	const force = Boolean(options.force);

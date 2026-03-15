@@ -1,7 +1,9 @@
-import { existsSync, readFileSync } from "fs";
+import { existsSync, readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
 
 import { z } from "zod";
+
+import { REGISTRY_URL, SCHEMA_URL } from "./constants.js";
 
 const configSchema = z.object({
 	aliases: z
@@ -11,7 +13,7 @@ const configSchema = z.object({
 		})
 		.default({}),
 	cssImport: z.string().optional(),
-	registryUrl: z.string().default("https://deckplate.netlify.app/r"),
+	registryUrl: z.string().default(REGISTRY_URL),
 });
 const CONFIG_NAME = "deckplate.json";
 
@@ -24,4 +26,15 @@ export function loadConfig(cwd: string): DeckplateConfig {
 	}
 	const raw = JSON.parse(readFileSync(configPath, "utf-8")) as unknown;
 	return configSchema.parse(raw);
+}
+
+export const configExists = (cwd: string) => existsSync(resolve(cwd, CONFIG_NAME));
+
+export function writeConfig(cwd: string, config: DeckplateConfig): void {
+	const configPath = resolve(cwd, CONFIG_NAME);
+	const output = {
+		$schema: SCHEMA_URL,
+		...config,
+	};
+	writeFileSync(configPath, JSON.stringify(output, null, "\t") + "\n", "utf-8");
 }

@@ -8,3 +8,4 @@ dist/
 .astro/
 registry/__registry__/
 packages/cli/.npmrc
+packages/theme/.npmrc
