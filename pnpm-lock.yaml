@@ -82,6 +82,12 @@ importers:
         specifier: ^5.5.0
         version: 5.9.3
 
+  packages/deckplate:
+    dependencies:
+      '@deckplate/cli':
+        specifier: '*'
+        version: 0.1.0
+
   packages/theme: {}
 
   registry:
@@ -234,6 +240,11 @@ packages:
   '@capsizecss/unpack@4.0.0':
     resolution: {integrity: sha512-VERIM64vtTP1C4mxQ5thVT9fK0apjPFobqybMtA1UdUujWka24ERHbRHFGmpbbhp73MhV+KSsHQH9C6uOTdEQA==}
     engines: {node: '>=18'}
+
+  '@deckplate/cli@0.1.0':
+    resolution: {integrity: sha512-nR91z7/mBJt2rkN5SRTve/4+IEKgVsir9AnWZXCyGLsXnqNhBdBiJNUUpHSkcFtbCEW2Tqwsj9ST46q1UC7MMw==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   '@emnapi/runtime@1.8.1':
     resolution: {integrity: sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg==}
@@ -2941,6 +2952,11 @@ snapshots:
   '@capsizecss/unpack@4.0.0':
     dependencies:
       fontkitten: 1.0.3
+
+  '@deckplate/cli@0.1.0':
+    dependencies:
+      commander: 12.1.0
+      zod: 3.25.76
 
   '@emnapi/runtime@1.8.1':
     dependencies:

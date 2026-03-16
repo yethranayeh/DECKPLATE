@@ -1,0 +1,35 @@
+{
+	"name": "deckplate",
+	"version": "0.1.0",
+	"description": "DECKPLATE cli wrapper that delegates to @deckplate/cli",
+	"keywords": [
+		"cli",
+		"components",
+		"deckplate",
+		"design-system",
+		"shadcn"
+	],
+	"homepage": "https://deckplate.netlify.app",
+	"bugs": {
+		"url": "https://github.com/yethranayeh/DECKPLATE/issues"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yethranayeh/DECKPLATE.git",
+		"directory": "packages/deckplate"
+	},
+	"bin": {
+		"deckplate": "bin.mjs"
+	},
+	"files": [
+		"bin.mjs"
+	],
+	"type": "module",
+	"dependencies": {
+		"@deckplate/cli": "*"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
+}
