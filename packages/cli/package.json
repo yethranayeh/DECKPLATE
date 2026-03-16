@@ -9,7 +9,6 @@
 		"deckplate",
 		"design-system",
 		"radix-ui",
-		"shadcn",
 		"tailwind"
 	],
 	"homepage": "https://deckplate.netlify.app",

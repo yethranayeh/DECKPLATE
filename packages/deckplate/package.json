@@ -6,8 +6,7 @@
 		"cli",
 		"components",
 		"deckplate",
-		"design-system",
-		"shadcn"
+		"design-system"
 	],
 	"homepage": "https://deckplate.netlify.app",
 	"bugs": {
