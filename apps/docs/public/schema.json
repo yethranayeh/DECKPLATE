@@ -1,0 +1,37 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "deckplate.json",
+	"description": "Config for for DECKPLATE",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"type": "string"
+		},
+		"aliases": {
+			"type": "object",
+			"description": "Default path aliases",
+			"properties": {
+				"components": {
+					"type": "string",
+					"default": "@/components/ui"
+				},
+				"lib": {
+					"type": "string",
+					"default": "@/lib",
+					"description": "Alias for the lib/utils"
+				}
+			},
+			"additionalProperties": false
+		},
+		"cssImport": {
+			"type": "string",
+			"description": "Path of CSS file that will have `@import \"@deckplate/theme\";` line for importing DECKPLATE"
+		},
+		"registryUrl": {
+			"type": "string",
+			"default": "https://deckplate.netlify.app/r",
+			"description": "Live source of DECKPLATE component registry"
+		}
+	},
+	"additionalProperties": false
+}

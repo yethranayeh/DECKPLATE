@@ -10,4 +10,4 @@ registry/__registry__/
 packages/cli/.npmrc
 packages/theme/.npmrc
 packages/deckplate/.npmrc
-apps/docs/public/
+apps/docs/public/r/
