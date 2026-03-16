@@ -3,7 +3,13 @@ import { resolve, dirname } from "path";
 
 import { loadConfig } from "../config.js";
 import { resolveRegistryTree, type RegistryItem } from "../registry/api.js";
-import { log, findProjectRoot, resolveOutputPath, transformImports } from "../utils/index.js";
+import {
+	log,
+	findProjectRoot,
+	detectPackageManager,
+	resolveOutputPath,
+	transformImports,
+} from "../utils/index.js";
 
 export async function add(component: string, options: Record<string, unknown>): Promise<void> {
 	const force = Boolean(options.force);
@@ -70,7 +76,8 @@ export async function add(component: string, options: Record<string, unknown>): 
 	if (allDeps.size > 0) {
 		log.info("INSTALL DEPENDENCIES:");
 		log.dim("");
-		log.dim(`  pnpm add ${[...allDeps].join(" ")}`);
+		const packageManager = detectPackageManager(projectRoot);
+		log.dim(`  ${packageManager} add ${[...allDeps].join(" ")}`);
 		log.dim("");
 	}
 
