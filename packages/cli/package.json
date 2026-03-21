@@ -1,6 +1,6 @@
 {
 	"name": "@deckplate/cli",
-	"version": "0.1.2",
+	"version": "0.2.0",
 	"private": false,
 	"description": "DECKPLATE CLI // add DECKPLATE components to your project",
 	"keywords": [
