@@ -28,7 +28,8 @@ export function installPackages(projectRoot: string, packages: string[]): void {
 	 * 	`npm` supports it also through an alias as well
 	 * @see https://docs.npmjs.com/cli/v9/commands/npm-install#synopsis
 	 */
-	execSync(`${packageManager} add ${packages.join(" ")}`, {
+	const command = `${packageManager} add ${packages.join(" ")}`;
+	execSync(command, {
 		cwd: projectRoot,
 		stdio: "pipe",
 	});

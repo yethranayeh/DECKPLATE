@@ -43,7 +43,6 @@ export async function init(options: InitOptions): Promise<void> {
 
 	log.divider();
 	log.info("INIT");
-	log.divider();
 
 	/**
 	 * Since `items` (currently only "utils") is not optional
@@ -84,7 +83,6 @@ export async function init(options: InitOptions): Promise<void> {
 	}
 
 	const packageManager = detectPackageManager(projectRoot);
-	log.info(`INSTALLING THEME // ${packageManager}`);
 
 	try {
 		installPackages(projectRoot, ["@deckplate/theme"]);
@@ -96,11 +94,10 @@ export async function init(options: InitOptions): Promise<void> {
 
 	log.divider();
 
-	log.info("Add to your CSS entry point:");
-	log.dim("");
+	log.info("Add custom theme to your main CSS file:");
 	log.dim('  @import "@deckplate/theme";');
-	log.dim("");
 
 	log.divider();
-	log.success("INITIALIZED // Run: npx deckplate add <component>");
+	log.success("INITIALIZED // You can now allocate components");
+	log.dim("  npx deckplate add <component>");
 }

@@ -5,8 +5,6 @@ import { fileURLToPath } from "url";
 import { REGISTRY_FILE_TYPES } from "@deckplate/registry/schema";
 import { z } from "zod";
 
-import { log } from "../utils/logger.js";
-
 /**
  * A stricter CLI-side schema version of registry schem
  *
@@ -62,7 +60,6 @@ export async function resolveRegistryTree(
 		const name = queue.shift()!;
 		if (resolved.has(name)) continue;
 
-		log.dim(`// Fetching: ${name}`);
 		const item = await fetchRegistryItem(registryUrl, name);
 		resolved.set(name, item);
 
