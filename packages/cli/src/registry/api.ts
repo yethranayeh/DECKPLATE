@@ -62,7 +62,7 @@ export async function resolveRegistryTree(
 		const name = queue.shift()!;
 		if (resolved.has(name)) continue;
 
-		log.dim(`  Fetching: ${name}`);
+		log.dim(`// Fetching: ${name}`);
 		const item = await fetchRegistryItem(registryUrl, name);
 		resolved.set(name, item);
 

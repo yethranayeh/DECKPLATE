@@ -1,6 +1,6 @@
 import { execSync } from "child_process";
-import { existsSync } from "fs";
-import { resolve, dirname } from "path";
+import { existsSync, readFileSync } from "fs";
+import { resolve, extname } from "path";
 
 import type { RegistryFileType } from "@deckplate/registry/schema";
 
@@ -34,21 +34,43 @@ export function installPackages(projectRoot: string, packages: string[]): void {
 	});
 }
 
-/** Assumes first occurrence of **package.json** is project root */
-export function findProjectRoot(cwd: string): string {
-	let dir = cwd;
-	while (true) {
-		if (existsSync(resolve(dir, "package.json"))) return dir;
-		const parent = dirname(dir);
-		if (parent === dir) return cwd;
-		dir = parent;
+/**
+ * Assumes "traditional" and most common patterns
+ * 	for finding alias configurations
+ *
+ * TODO: Need to check for "paths" configuration which is probably more common than baseUrl
+ * TODO: Need to be able to read TypeScript and Javascript configurations
+ */
+export function findAlisConfiguration(projectRoot: string): string | null {
+	const check = (configFile: string) => existsSync(resolve(projectRoot, configFile));
+
+	const possibleConfigLocations = ["tsconfig.json", "vite.config.ts", "vite.config.js"];
+
+	for (const configFileName of possibleConfigLocations) {
+		if (check(configFileName)) {
+			const fileContent = readFileSync(configFileName, "utf-8");
+			if (extname(configFileName) === ".json") {
+				const configuration: {
+					compilerOptions?: {
+						baseUrl?: string;
+					};
+				} = JSON.parse(fileContent);
+
+				return configuration.compilerOptions?.baseUrl ?? null;
+			}
+
+			// TODO: check for .js and .ts files
+		}
 	}
+
+	return null;
 }
 
 /**
  * Map file path to target project path.
  * @example // registry:lib files mapped to lib alias path
  * @example // registry:ui files mapped to components alias path
+ * TODO: Should the "@" replacement be handled here?
  */
 export function resolveOutputPath(
 	filePath: string,
@@ -56,9 +78,9 @@ export function resolveOutputPath(
 	config: DeckplateConfig,
 ): string {
 	if (fileType === "registry:lib") {
-		const relativePath = filePath.replace(/^lib\//, "");
-		return `${config.aliases.lib.replace(/^@\//, "")}/${relativePath}`;
+		const withoutParentPath = filePath.replace(/^lib\//, "");
+		return `${config.aliases.lib.replace(/^@\//, "")}/${withoutParentPath}`;
 	}
-	const relativePath = filePath.replace(/^ui\//, "");
-	return `${config.aliases.components.replace(/^@\//, "")}/${relativePath}`;
+	const withoutParentPath = filePath.replace(/^ui\//, "");
+	return `${config.aliases.components.replace(/^@\//, "")}/${withoutParentPath}`;
 }

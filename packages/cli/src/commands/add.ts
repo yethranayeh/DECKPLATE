@@ -2,14 +2,9 @@ import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 
 import { loadConfig } from "../config.js";
+import { findProjectRoot } from "../lib/directory.js";
 import { resolveRegistryTree, type RegistryItem } from "../registry/api.js";
-import {
-	log,
-	findProjectRoot,
-	detectPackageManager,
-	resolveOutputPath,
-	transformImports,
-} from "../utils/index.js";
+import { log, detectPackageManager, resolveOutputPath, transformImports } from "../utils/index.js";
 
 export async function add(component: string, options: Record<string, unknown>): Promise<void> {
 	const force = Boolean(options.force);

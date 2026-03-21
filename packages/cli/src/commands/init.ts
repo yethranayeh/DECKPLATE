@@ -3,15 +3,16 @@ import { resolve, dirname } from "path";
 
 import { configExists, writeConfig, type DeckplateConfig } from "../config.js";
 import { REGISTRY_URL } from "../constants.js";
+import { checkSrcDir, findProjectRoot } from "../lib/directory.js";
 import { resolveRegistryTree, type RegistryItem } from "../registry/api.js";
 import {
 	log,
-	findProjectRoot,
 	resolveOutputPath,
 	transformImports,
 	detectPackageManager,
 	installPackages,
 } from "../utils/index.js";
+import { findAlisConfiguration } from "../utils/project.js";
 
 interface InitOptions {
 	components?: string;
@@ -23,6 +24,9 @@ export async function init(options: InitOptions): Promise<void> {
 	const force = Boolean(options.force);
 	const cwd = process.cwd();
 	const projectRoot = findProjectRoot(cwd);
+	const hasSrcDir = checkSrcDir(projectRoot);
+	const aliasMapping = findAlisConfiguration(projectRoot);
+	const importPathPrefix = aliasMapping ?? (hasSrcDir ? "./src/" : "@/");
 
 	if (configExists(projectRoot) && !force) {
 		log.warn("deckplate.json EXISTS // use --force to overwrite");
@@ -31,8 +35,8 @@ export async function init(options: InitOptions): Promise<void> {
 
 	const config: DeckplateConfig = {
 		aliases: {
-			components: options.components ?? "@/components/ui",
-			lib: options.lib ?? "@/lib",
+			components: options.components ?? importPathPrefix + `components/ui`,
+			lib: options.lib ?? importPathPrefix + "lib",
 		},
 		registryUrl: process.env.DECKPLATE_REGISTRY_URL ?? REGISTRY_URL,
 	};
