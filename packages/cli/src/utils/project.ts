@@ -30,7 +30,7 @@ export function installPackages(projectRoot: string, packages: string[]): void {
 	 */
 	execSync(`${packageManager} add ${packages.join(" ")}`, {
 		cwd: projectRoot,
-		stdio: "inherit",
+		stdio: "pipe",
 	});
 }
 
