@@ -1,0 +1,199 @@
+{
+	"$schema": "https://ui.shadcn.com/schema/registry.json",
+	"name": "deckplate",
+	"homepage": "https://deckplate.netlify.app",
+	"items": [
+		{
+			"name": "font-display",
+			"type": "registry:font",
+			"description": "Barlow Condensed for header display elements",
+			"font": {
+				"family": "'Barlow Condensed', 'Arial Narrow', Arial, sans-serif",
+				"provider": "google",
+				"import": "Barlow_Condensed",
+				"variable": "--font-display",
+				"weight": ["400", "700", "900"],
+				"subsets": ["latin"],
+				"dependency": "@fontsource/barlow-condensed"
+			}
+		},
+		{
+			"name": "font-mono",
+			"type": "registry:font",
+			"description": "Share Tech Mono for monospace usage like serial numbers and data",
+			"font": {
+				"family": "'Share Tech Mono', 'Courier New', monospace",
+				"provider": "google",
+				"import": "Share_Tech_Mono",
+				"variable": "--font-mono",
+				"weight": ["400"],
+				"subsets": ["latin"],
+				"dependency": "@fontsource/share-tech-mono"
+			}
+		},
+		{
+			"name": "deckplate-theme",
+			"type": "registry:theme",
+			"description": "DECKPLATE colors, font variables, utilities (stripe, grid-overlay, glitch, pulse), and keyframes",
+			"registryDependencies": [
+				"@deckplate/font-display",
+				"@deckplate/font-mono",
+				"@deckplate/deckplate-base"
+			],
+			"cssVars": {
+				"light": {
+					"orange": "#ff5e00",
+					"yellow": "#ffd600",
+					"red": "#c91200",
+					"red-hi": "#ff2200",
+					"black": "#030303",
+					"surface": "#111111",
+					"off-white": "#ede8dc",
+					"dim": "#666660",
+					"line": "#282828",
+					"active-green": "#00ff66",
+					"font-display": "'Barlow Condensed', 'Arial Narrow', Arial, sans-serif",
+					"font-mono": "'Share Tech Mono', 'Courier New', monospace",
+					"animate-glitch": "glitch 10s infinite",
+					"animate-pulse-active": "pulse-active 2s cubic-bezier(0, 0, 0.2, 1) infinite",
+					"animate-pulse-warning": "pulse-warning 2s cubic-bezier(0, 0, 0.2, 1) infinite",
+					"animate-pulse-danger": "pulse-danger 1.4s cubic-bezier(0, 0, 0.2, 1) infinite"
+				}
+			},
+			"css": {
+				"@import \"@/styles/deckplate-base.css\"": {},
+				"@utility stripe": {
+					"background": "repeating-linear-gradient(-45deg, var(--color-orange) 0px, var(--color-orange) 8px, var(--color-black) 8px, var(--color-black) 16px)"
+				},
+				"@utility stripe-restricted": {
+					"background": "repeating-linear-gradient(-45deg, rgba(255, 214, 0, 0.055) 0px, rgba(255, 214, 0, 0.055) 8px, transparent 8px, transparent 20px)"
+				},
+				"@utility grid-overlay": {
+					"position": "relative",
+					"overflow": "hidden",
+					"&::before": {
+						"content": "\"\"",
+						"position": "absolute",
+						"inset": "0",
+						"background": "repeating-linear-gradient(90deg, rgba(255, 94, 0, 0.07) 0, rgba(255, 94, 0, 0.07) 1px, transparent 1px, transparent 48px), repeating-linear-gradient(0deg, rgba(255, 94, 0, 0.07) 0, rgba(255, 94, 0, 0.07) 1px, transparent 1px, transparent 48px)",
+						"pointer-events": "none",
+						"z-index": "0"
+					},
+					"& > *": {
+						"position": "relative",
+						"z-index": "1"
+					}
+				},
+				"@utility serial": {
+					"font-family": "var(--font-mono)",
+					"font-size": "0.65rem",
+					"letter-spacing": "0.15em",
+					"color": "var(--color-dim)",
+					"text-transform": "uppercase"
+				}
+			}
+		},
+		{
+			"name": "deckplate-base",
+			"type": "registry:file",
+			"description": "external CSS definitions for font weight imports and animation keyframes",
+			"dependencies": ["@fontsource/barlow-condensed", "@fontsource/share-tech-mono"],
+			"files": [
+				{
+					"path": "styles/deckplate-base.css",
+					"type": "registry:file",
+					"target": "styles/deckplate-base.css"
+				}
+			]
+		},
+		{
+			"name": "utils",
+			"type": "registry:lib",
+			"description": "cn() class merging utility (clsx + tailwind-merge)",
+			"dependencies": ["clsx", "tailwind-merge"],
+			"files": [
+				{
+					"path": "lib/utils.ts",
+					"type": "registry:lib"
+				}
+			]
+		},
+		{
+			"name": "button",
+			"type": "registry:ui",
+			"description": "Standard button element with four variants: primary, danger, outline, ghost",
+			"dependencies": ["class-variance-authority"],
+			"registryDependencies": ["@deckplate/utils", "@deckplate/deckplate-theme"],
+			"files": [
+				{
+					"path": "ui/button.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "badge",
+			"type": "registry:ui",
+			"description": "Operational state indicator. Seven variants across outline and fill styles.",
+			"dependencies": ["class-variance-authority"],
+			"registryDependencies": ["@deckplate/utils", "@deckplate/deckplate-theme"],
+			"files": [
+				{
+					"path": "ui/badge.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "status-dot",
+			"type": "registry:ui",
+			"description": "Circular unit state indicator. Four states with pulse animations.",
+			"dependencies": ["class-variance-authority"],
+			"registryDependencies": ["@deckplate/utils", "@deckplate/deckplate-theme"],
+			"files": [
+				{
+					"path": "ui/status-dot.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "progress-bar",
+			"type": "registry:ui",
+			"description": "Operational metric bar. Switches to danger color below threshold.",
+			"registryDependencies": ["@deckplate/utils", "@deckplate/deckplate-theme"],
+			"files": [
+				{
+					"path": "ui/progress-bar.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "typography",
+			"type": "registry:ui",
+			"description": "Typography component with 6 predefined variants: display, headline-xl, headline-lg, label-md, label-sm, serial.",
+			"dependencies": ["class-variance-authority"],
+			"registryDependencies": ["@deckplate/utils", "@deckplate/deckplate-theme"],
+			"files": [
+				{
+					"path": "ui/typography.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "full",
+			"type": "registry:ui",
+			"description": "Contains all DECKPLATE components, theme, fonts, and utilities as dependency",
+			"registryDependencies": [
+				"@deckplate/button",
+				"@deckplate/badge",
+				"@deckplate/status-dot",
+				"@deckplate/progress-bar",
+				"@deckplate/typography"
+			],
+			"files": []
+		}
+	]
+}

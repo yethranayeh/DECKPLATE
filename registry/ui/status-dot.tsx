@@ -33,9 +33,9 @@ const glowClass: Record<string, string> = {
 };
 
 const pulseClass: Record<string, string> = {
-	active: "pulse-active",
-	warning: "pulse-warning",
-	danger: "pulse-danger",
+	active: "animate-pulse-active",
+	warning: "animate-pulse-warning",
+	danger: "animate-pulse-danger",
 	offline: "",
 };
 

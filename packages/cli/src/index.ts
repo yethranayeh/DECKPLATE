@@ -13,8 +13,6 @@ const program = new Command()
 program
 	.command("init")
 	.description("Initialize DECKPLATE configurations for project")
-	.option("--components <alias>", 'Component alias path (default: "@/components/ui")')
-	.option("--lib <alias>", 'Lib alias path (default: "@/lib")')
 	.option("-f, --force", "Overwrite existing config and files")
 	.action(async (options: Record<string, unknown>) => {
 		const { init } = await import("./commands/init.js");

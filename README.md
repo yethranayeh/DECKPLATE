@@ -16,15 +16,38 @@ The project aims to follow the standards set by the well established [Shadcn](ht
 
 ## Install
 
-To install DECKPLATE to an existing project, running `npx deckplate init` should be enough to get started.
+> [!NOTE]
+> It should be noted that the project must have `shadcn` initialized beforehand. The official [installation guide](https://ui.shadcn.com/docs/installation) can be used as reference.
 
-To add a specific component to the project, for example a button, `npx deckplate add button` can be run.
+To install **DECKPLATE** to an existing project, you will first need to update **component.json** so that `shadcn add` recognizes this library's registry:
 
-To see all the available components, you can visit the [Components](https://deckplate.netlify.app/components/) page for documentation or the [/ui/](./registry/ui/) directory for the source code.
+```diff
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "registries": {
++    "@deckplate": "https://deckplate.netlify.app/r/{name}.json"
+  }
+}
+```
+
+Then, to add a specific component to your project, for example a badge, `npx shadcn@latest add @deckplate/badge` can be run.
+
+If you prefer to, instead, install the _whole_ registry content at once, you can run `npx shadcn@latest add @deckplate/full`
+
+To see all the available components, you can visit the documentation page for [Components](https://deckplate.netlify.app/components/) or the [/ui/](./registry/ui/) directory for the source code files
 
 ### Theme
 
-DECKPLATE has custom color variables and Tailwind utility definitions, which is published as a _separate_ npm package. The `init` command automatically downloads the package to the project. However, the user is expected to actually _include_ the theme by adding `@import "@deckplate/theme";` to the main CSS file.
+When you install any **DECKPLATE** component, the Shadcn CLI will also resolve the custom colors, fonts, keyframe animations, and utility classes that are needed. These will copied and stored in `styles/deckplate-base.css` in your project. Then, the CSS will be automatically injected to you main CSS with `@import "@/styles/deckplate-base.css";` line by Shadcn CLI.
+
+This separate file exists because there are some limitation with the way CSS is distributed through Shadcn:
+
+- **KEYFRAMES**: The recommended way of using `registry:theme` definition for CSS rules causes the keyframe definitions to be placed inside `@theme inline {}` which is not the desired outcome for these to work properly.
+- **FONT**: Shadcn CLI knows integrate these fonts as dependencies to the project and injects the necessary CSS imports, but it only handles the default _400_ weight, and per-weight imports do not seem to be supported. The `text-display` class requires the _900_ weight to achieve the extra bold look for headers.
+
+> [!NOTE]
+> You may also notice that Shadcn injects `@import "@fontsource/barlow-condensed"` and `@import "@fontsource/share-tech-mono"` lines into your CSS even though **deckplate-base.css** already has these.
+> These are generated because of our `registry:font` definitions, which are necessary to have Shadcn regard the fonts as project dependencies. You can safely remove them if you prefer a cleaner file.
 
 ## Development
 

@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import { dirname, join, resolve } from "path";
+import { dirname, resolve } from "path";
 
 /** Assumes first occurrence of **package.json** is project root */
 export function findProjectRoot(cwd: string): string {
@@ -11,5 +11,3 @@ export function findProjectRoot(cwd: string): string {
 		dir = parent;
 	}
 }
-
-export const checkSrcDir = (projectRoot: string) => existsSync(join(projectRoot, "src"));

@@ -1,0 +1,63 @@
+/* used by `font-display` and Typography */
+@import "@fontsource/barlow-condensed/400.css";
+@import "@fontsource/barlow-condensed/700.css";
+@import "@fontsource/barlow-condensed/900.css";
+
+/* used by `font-mono` and Typography*/
+@import "@fontsource/share-tech-mono/400.css";
+
+/* Animations */
+@keyframes glitch {
+	0%,
+	86%,
+	100% {
+		text-shadow: none;
+		transform: none;
+	}
+	87% {
+		text-shadow:
+			4px 0 var(--color-red-hi),
+			-4px 0 var(--color-yellow);
+		transform: skewX(-2deg);
+	}
+	88% {
+		text-shadow:
+			-3px 0 var(--color-red-hi),
+			3px 0 var(--color-yellow);
+		transform: skewX(1deg);
+	}
+	89% {
+		text-shadow: none;
+		transform: none;
+	}
+}
+
+@keyframes pulse-active {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.5);
+	}
+	70%,
+	100% {
+		box-shadow: 0 0 0 6px rgba(0, 255, 102, 0);
+	}
+}
+
+@keyframes pulse-warning {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 94, 0, 0.5);
+	}
+	70%,
+	100% {
+		box-shadow: 0 0 0 6px rgba(255, 94, 0, 0);
+	}
+}
+
+@keyframes pulse-danger {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 34, 0, 0.5);
+	}
+	70%,
+	100% {
+		box-shadow: 0 0 0 6px rgba(255, 34, 0, 0);
+	}
+}
